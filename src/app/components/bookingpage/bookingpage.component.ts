@@ -19,4 +19,7 @@ export class BookingpageComponent {
   MIN_LENGTH = 5;
 
 
+  onBookClick() {
+
+  }
 }

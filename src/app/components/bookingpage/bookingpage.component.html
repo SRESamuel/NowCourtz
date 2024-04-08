@@ -1,4 +1,4 @@
-<div class="container-fluid mt-5">
+<div class="container-fluid mt-5" xmlns="http://www.w3.org/1999/html">
   <div class="container ">
     <div class="container">
 <div class="card">
@@ -55,7 +55,23 @@
 
       <h4 style="color:steelblue">Sport</h4>
 
+      <div class="mt-3">
+      <input type="checkbox" class="btn-check" id="btnBasketball" autocomplete="off">
+      <label class="btn btn-primary" for="btnBasketball">Basketball</label>
+      <span style="margin-left: 8px;"></span>
+      <input type="checkbox" class="btn-check" id="btnVolleyball" autocomplete="off">
+      <label class ="btn btn-primary" for="btnVolleyball">Volleyball</label>
+      <span style="margin-left: 8px;"></span>
+      <input type="checkbox" class="btn-check" id="btnDodgeball" autocomplete="off">
+      <label class="btn btn-primary" for="btnDodgeball">Dodgeball</label>
+      <span style="margin-left: 8px;"></span>
+      <input type="checkbox" class="btn-check" id="btnTennis" autocomplete="off">
+      <label class="btn btn-primary" for="btnTennis">Tennis</label>
+      </div>
 
+      <div class="mt-5">
+      <button type="button" id="btnBook" class="btn btn-success" (click)="onBookClick()">Book</button>
+      </div>
     </form>
 
 </div>
