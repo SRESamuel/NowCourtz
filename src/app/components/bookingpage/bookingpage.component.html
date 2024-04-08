@@ -54,16 +54,7 @@
       </div>
 
       <h4 style="color:steelblue">Sport</h4>
-      <div class="mb-3">
-        <label class="mb-2" for="txtTimeSlot">Time Slot</label>
-        <input id="txtSport" type="radio" value="Basketball" class="form-control" name="txtTimeSlot" [(ngModel)]="booking.timeSlot" #timeSlot="ngModel"
-               required [minlength] = "MIN_LENGTH"/>
-        @if (timeSlot.invalid && (timeSlot.touched || timeSlot.dirty)){
-          @if(timeSlot.errors?.['required']){
-            <small class="text-danger">Picking a time slot is required</small><br>
-          }
-        }
-      </div>
+
 
     </form>
 
