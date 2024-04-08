@@ -1,0 +1,63 @@
+header {
+  padding: 10px;
+  background: #cce1ec;
+}
+.logo {
+  width: 105px;
+}
+.logo:hover {
+  cursor: pointer;
+}
+.menuDesktop {
+  margin-top: 24px;
+}
+.menuDesktop ul {
+  padding: 0;
+  margin: 0;
+}
+.menuDesktop ul li {
+  list-style-type: none;
+  color: black;
+  display: inline-block;
+  font-size: 18px;
+  margin-left: 26px;
+}
+.menuDesktop ul li:hover {
+  font-size: 19px;
+  font-weight: bold;
+  cursor: pointer;
+  color: darkslategrey;
+  transition: 0.3s ease-in-out;
+}
+.icon-menu {
+  display: none;
+}
+
+@media screen and (min-width: 128px) and (max-width: 900px) {
+  .menuDesktop {
+    position: fixed !important;
+    right: -280px;
+    transition: 0.4s ease-in-out;
+    top: 64px;
+    background: #cce1ec;
+    width: 280px;
+    height: 100%;
+  }
+  .menuDesktop ul li {
+    display: block;
+    text-align: left;
+    margin: 0;
+    padding: 10px 0 10px 26px;
+    border-bottom: 1px solid black;
+  }
+  .icon-menu {
+    display: block;
+    color: black;
+    font-size: 40px;
+    padding-top: 10px;
+  }
+  .menuMobile {
+    right: 0;
+    transition: 0.4s ease-in-out;
+  }
+}
