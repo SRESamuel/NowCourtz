@@ -1,46 +1,25 @@
 <header>
-  <nav class="navbar navbar-expand-lg bg-white mb-5">
-    <div class="container-fluid">
-      <img alt="" class="logo" src="assets/img/Logo.png" width="100" height="100" style="border-radius: 50%"> <a class="navbar-brand" href="#"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <!--Router link replaces href have to import it-->
-          <!--Created the add/home etc in route links-->
-          <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
-          <a class="nav-link" routerLink="/courts">Courts</a>
-          <a class="nav-link" routerLink="/booking">Bookings</a>
-          <a class="nav-link" routerLink="/profile">Profile</a>
-          <a class="nav-link" routerLink="/about">About Us</a>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <!--<div class="container">
+  <div class="container">
     <div class="row">
       <div class="col-md-3 col-sm-3 col-3">
-        <div class="logo-container">
-          <img alt="" class="logo" src="assets/img/Logo.png">
-        </div>
+          <a>
+            <img (click)="menuClose()" alt="CourtzLogo" class="logo" routerLink="/home" src="assets/img/Logo.png">
+          </a>
       </div>
       <div class="col-md-9 col-sm-9 col-9 text-end">
-        <div class="menu-icon">
-          <i class="bi bi-list"></i>
+        <div class="icon-menu" (click)="menuOpen()">
+          <i class="{{menu_icon}}"></i>
         </div>
-        <div class="desktop_menu">
+        <div class="menuDesktop" [class.menuMobile]="menuVal">
           <ul>
-            <li>Home</li>
-            <li>Courts</li>
-            <li>Bookings</li>
-            <li>Profile</li>
-            <li>About Us</li>
+            <li (click)="menuClose()" class="bi bi-house nav-link active" aria-current="page" routerLink="/home">Home</li>
+            <li (click)="menuClose()" class="nav-link" routerLink="/courts">Courts</li>
+            <li (click)="menuClose()" class="nav-link" routerLink="/booking">Bookings</li>
+            <li (click)="menuClose()" class="nav-link" routerLink="/profile">Profile</li>
+            <li (click)="menuClose()" class="nav-link" routerLink="/about">About Us</li>
           </ul>
         </div>
       </div>
     </div>
-  </div>-->
+  </div>
 </header>
-
