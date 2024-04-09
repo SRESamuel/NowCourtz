@@ -1,7 +1,11 @@
 header {
-  padding: 10px;
-  background: #cce1ec;
+  position: fixed; /* or 'sticky' if you prefer */
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* higher than the content z-index */
+  background: #cce1ec; /* assuming you want a background */
 }
+
 .logo {
   width: 105px;
 }
@@ -10,6 +14,7 @@ header {
 }
 .menuDesktop {
   margin-top: 24px;
+  z-index: 1001;
 }
 .menuDesktop ul {
   padding: 0;

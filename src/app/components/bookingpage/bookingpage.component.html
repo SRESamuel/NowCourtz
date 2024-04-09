@@ -1,22 +1,82 @@
-<div class="container-fluid mt-5">
-<div class="card">
-  <div class="card-header">
-    <h2>Book a Court</h2>
-  </div>
-  <div class="card-body">
-    <form #bookForm = "ngForm">
-        <div class="mb-3">
-          //Start of booking
-          <label for="txtFullName">Full Name</label>
-          <input id="txtFullName" type="text" class="form-control"
-                 name="txtFullName"
-                    />
-<!--                 [(ngModel)]="book.title"-->
-<!--                 #title="ngModel">-->
+<div class="container-fluid mt-5" xmlns="http://www.w3.org/1999/html">
+  <div class="container ">
+    <div class="container">
+      <div class="card">
+        <div class="card-header text-center bg-dark">
+          <h2 style="color:white">{{title}}</h2>
         </div>
+        <div class="card-body">
+          <h4 style="color:steelblue">Your Information</h4>
+          <form #bookForm="ngForm">
+            <div class="mb-3">
+              <label class="mb-2" for="txtFullName">Full Name</label>
+              <input id="txtFullName" type="text" class="form-control" name="txtFullName" [(ngModel)]="booking.fullName" #fullName="ngModel"
+                     required [minlength] = "MIN_LENGTH"/>
+              @if (fullName.invalid && (fullName.touched || fullName.dirty)){
+                @if(fullName.errors?.['required']){
+                  <small class="text-danger">Your Name is required</small><br>
+                }
+                @if (fullName.errors?. ['minlength']){
+                  <small class="text-danger">Your Name must be at least {{MIN_LENGTH}} characters long</small><br>
+                }
+              }
+            </div>
+            <div class="mb-3">
+              <label class="mb-2" for="txtEmail">Email Address</label>
+              <input id="txtEmail" type="text" class="form-control" name="txtEmail" [(ngModel)]="booking.email" #email="ngModel"
+                     required [minlength] = "MIN_LENGTH"/>
+              @if (email.invalid && (email.touched || email.dirty)){
+                @if(email.errors?.['required']){
+                  <small class="text-danger">Your email address is required</small><br>
+                }
+              }
+            </div>
+            <div class="mb-3">
+              <label class="mb-2" for="txtPhoneNumber">Phone</label>
+              <input id="txtPhoneNumber" type="text" class="form-control" name="txtPhoneNumber" [(ngModel)]="booking.phoneNumber" #phoneNumber="ngModel"
+                     required [minlength] = "MIN_LENGTH"/>
+              @if (phoneNumber.invalid && (phoneNumber.touched || phoneNumber.dirty)){
+                @if(phoneNumber.errors?.['required']){
+                  <small class="text-danger">Your phone number is required</small><br>
+                }
+              }
+            </div>
+            <h4 style="color:steelblue">Date & Time</h4>
+            <div class="mb-3">
+              <label class="mb-2" for="txtTimeSlot">Time Slot</label>
+              <input id="txtTimeSlot" type="text" class="form-control" name="txtTimeSlot" [(ngModel)]="booking.timeSlot" #timeSlot="ngModel"
+                     required [minlength] = "MIN_LENGTH"/>
+              @if (timeSlot.invalid && (timeSlot.touched || timeSlot.dirty)){
+                @if(timeSlot.errors?.['required']){
+                  <small class="text-danger">Picking a time slot is required</small><br>
+                }
+              }
+            </div>
 
-    </form>
+            <h4 style="color:steelblue">Sport</h4>
 
+            <div class="mt-3">
+              <input type="checkbox" class="btn-check" id="btnBasketball" autocomplete="off">
+              <label class="btn btn-primary" for="btnBasketball">Basketball</label>
+              <span style="margin-left: 8px;"></span>
+              <input type="checkbox" class="btn-check" id="btnVolleyball" autocomplete="off">
+              <label class ="btn btn-primary" for="btnVolleyball">Volleyball</label>
+              <span style="margin-left: 8px;"></span>
+              <input type="checkbox" class="btn-check" id="btnDodgeball" autocomplete="off">
+              <label class="btn btn-primary" for="btnDodgeball">Dodgeball</label>
+              <span style="margin-left: 8px;"></span>
+              <input type="checkbox" class="btn-check" id="btnTennis" autocomplete="off">
+              <label class="btn btn-primary" for="btnTennis">Tennis</label>
+            </div>
+
+            <div class="mt-5">
+              <button type="button" id="btnBook" class="btn btn-success" (click)="onBookClick()">Book</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-</div>
+
