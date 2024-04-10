@@ -1,1 +1,27 @@
-<p>viewbookingspage works!</p>
+<div class="m-4">
+  <div class="card">
+    <div class="card-header">
+      <h2>All Court Bookings</h2>
+    </div>
+    <div class="card-body">
+      <ul class="list-group">
+        @for (booking of bookings;track $index) {
+          <li class="list-group-item">
+            <button type="button" id="btnDelete" class="btn btn-danger btn-sm me-4"
+                    (click)="onDeleteClick(booking)">
+              Delete
+            </button> <!--Still working on layout for this-->
+            {{ booking.firstName }} {{booking.lastName}} {{booking.email}}{{booking.phoneNumber}}
+            {{ booking.courtType }} {{booking.timeSlot}}
+          </li>
+          <!--if no bookings found-->
+        } @empty {
+          <h4>No bookings in the system</h4>
+        }
+      </ul>
+    </div>
+    <div class="card-footer">
+
+    </div>
+  </div>
+</div>

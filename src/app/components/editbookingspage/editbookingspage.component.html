@@ -80,13 +80,12 @@
                          required [minlength] = "MIN_LENGTH"/>
                   @if (timeSlot.invalid && (timeSlot.touched || timeSlot.dirty)){
                     @if(timeSlot.errors?.['required']){
-                      <small class="text-danger">Please select a time</small><br>
+                      <small class="text-danger">Please pick a time</small><br>
                     }
                   }
                 </div>
               </div>
             </div>
-
             <h4 style="color:steelblue">Court Type</h4>
 
             <div class="mb-3">
@@ -110,14 +109,12 @@
             </div>
 
             <div class="mt-5 d-flex justify-content-center">
-              <button type="submit" [disabled]="bookForm.invalid" id="btnBook" class="btn btn-success btn-md"
-                      (click)="onBookClick(); bookForm.reset()" style="width: 300px;">Book</button>
+              <button type="submit" [disabled]="bookForm.invalid" id="btnEdit" class="btn btn-success btn-md"
+                      (click)="onEditClick()" style="width: 300px;">Update</button>
             </div>
           </form>
-        </div>
         </div>
       </div>
     </div>
   </div>
-
-
+</div>

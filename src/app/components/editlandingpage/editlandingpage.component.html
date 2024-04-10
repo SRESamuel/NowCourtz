@@ -1,0 +1,25 @@
+<div class="m-4">
+  <div class="card">
+    <div class="card-header">
+      <h2>Select a Booking to Edit</h2>
+    </div>
+    <div class="card-body">
+      <ul class="list-group">
+        @for (booking of bookings;track $index) {
+          <div class="list-group-item" (click)="onEditClick(booking)">
+
+            <!--Still working on layout for this-->
+            {{ booking.firstName }} {{booking.lastName}}
+            {{ booking.courtType }} {{booking.timeSlot}} <i class="bi bi-pencil"></i>
+          </div>
+          <!--if no bookings found-->
+        } @empty {
+          <h4>No bookings in the system</h4>
+        }
+      </ul>
+    </div>
+    <div class="card-footer">
+
+    </div>
+  </div>
+</div>
