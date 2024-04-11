@@ -1,7 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {Booking} from "../../models/booking.model";
-import {BookingDALService} from "../../../services/dal.service";
+import {Profile} from "../../models/profile.model";
+import {ProfileDALService} from "../../../services/profileDAL.service";
 
 @Component({
   selector: 'app-profilepage',
@@ -15,17 +15,17 @@ import {BookingDALService} from "../../../services/dal.service";
 })
 export class ProfilepageComponent {
   title = "Create a Profile";
-  booking: Booking = new Booking("", "", "", "", "","","");
+  profile: Profile = new Profile("", "", "", "", "","","","","");
   MIN_LENGTH = 2;
-  dal = inject(BookingDALService) //importing crud functions from dal
+  dal = inject(ProfileDALService) //importing crud functions from dal
   constructor() {
   }
 
-  onBookClick() {
+  onProfileClick() {
 
-    this.dal.insert(this.booking).then((data) => {
+    this.dal.insert(this.profile).then((data) => {
       console.log(data);
-      alert("Your court has been booked!");
+      alert("Your profile has been created!");
     }).catch(e => {
       console.log("error " + e.message)
     })

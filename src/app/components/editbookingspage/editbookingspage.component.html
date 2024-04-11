@@ -11,7 +11,7 @@
             <div class="mb-3">
               <div class="row">
                 <div class="col">
-
+                  <label class="mb-2" for="txtFirstName"></label>
                   <input type="text" class="form-control" placeholder="First name" aria-label="txtFirstName" id="txtFirstName" name="txtFirstName"
                          [(ngModel)]="booking.firstName" #firstName="ngModel"
                          required [minlength] = "MIN_LENGTH">
@@ -25,6 +25,7 @@
                   }
                 </div>
                 <div class="col">
+                  <label class="mb-2" for="txtLastName"></label>
                   <input type="text" class="form-control" placeholder="Last name" aria-label="txtLastName" id="txtLastName" name="txtLastName"
                          [(ngModel)]="booking.lastName" #lastName="ngModel"
                          required [minlength] = "MIN_LENGTH"/>

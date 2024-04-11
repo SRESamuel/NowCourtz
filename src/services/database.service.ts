@@ -17,8 +17,6 @@ export class DatabaseService {
       console.log("Error in database creation: " + e.message)
     })
   }
-
-  // must be called when the program runs. manually called in setting page
   createDatabase(): Promise<any> {
     return new Promise((resolve, reject) => {
       const request = indexedDB.open("NowCourtzDB", 1);
@@ -61,6 +59,12 @@ export class DatabaseService {
         //Significant Object Store for booking of Courts
         const bookingsStore = this.db.createObjectStore("bookings", {
           keyPath: "id", //id of booking class
+          autoIncrement: true,
+        });
+
+        //Significant Object Store for profiles
+        const profileStore = this.db.createObjectStore("profile", {
+          keyPath: "id", //id of profile class
           autoIncrement: true,
         });
       };

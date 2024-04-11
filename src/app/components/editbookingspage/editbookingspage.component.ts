@@ -1,7 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {FormsModule} from "@angular/forms";
 import {Booking} from "../../models/booking.model";
-import {BookingDALService} from "../../../services/dal.service";
+import {BookingDALService} from "../../../services/bookingDAL.service";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({

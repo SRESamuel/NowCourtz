@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../../../styles.css">
+
 <div class="container-fluid mt-5">
   <div class="container">
     <div class="container">
@@ -8,13 +8,13 @@
         </div>
         <div class="card-body">
           <h4 style="color:steelblue">Your Information</h4>
-          <form #bookForm="ngForm">
+          <form #profileForm="ngForm" class="row g-3">
             <div class="mb-3">
               <div class="row">
                 <div class="col">
-
+                  <label class="mb-2" for="txtFirstName"></label>
                   <input type="text" class="form-control" placeholder="First name" aria-label="txtFirstName" id="txtFirstName" name="txtFirstName"
-                         [(ngModel)]="booking.firstName" #firstName="ngModel"
+                         [(ngModel)]="profile.firstName" #firstName="ngModel"
                          required [minlength] = "MIN_LENGTH">
                   @if (firstName.invalid && (firstName.touched || firstName.dirty)){
                     @if(firstName.errors?.['required']){
@@ -26,8 +26,9 @@
                   }
                 </div>
                 <div class="col">
+                  <label class="mb-2" for="txtLastName"></label>
                   <input type="text" class="form-control" placeholder="Last name" aria-label="txtLastName" id="txtLastName" name="txtLastName"
-                         [(ngModel)]="booking.lastName" #lastName="ngModel"
+                         [(ngModel)]="profile.lastName" #lastName="ngModel"
                          required [minlength] = "MIN_LENGTH"/>
                   @if (lastName.invalid && (firstName.touched || lastName.dirty)){
                     @if(lastName.errors?.['required']){
@@ -40,22 +41,10 @@
                 </div>
               </div>
             </div>
-            <div class="mb-3">
-              <label class="mb-2" for="txtEmail"></label>
-              <input id="txtEmail" type="text" class="form-control" placeholder="Email address" name="txtEmail" [(ngModel)]="booking.email" #email="ngModel"
-                     required pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}[\s]{0,1}$"/>
-              @if (email.invalid && (email.touched || email.dirty)){
-                @if(email.errors?.['required']){
-                  <small class="text-danger">Your email address is required</small><br>
-                }
-                @if(email.errors?.['pattern']){
-                  <small class="text-danger">Invalid email address format</small><br>
-                }
-              }
-            </div>
-            <div class="mb-3">
+
+            <div class="col-md-6">
               <label class="mb-2" for="txtPhoneNumber"></label>
-              <input id="txtPhoneNumber" type="text" class="form-control" placeholder="Phone number" name="txtPhoneNumber" [(ngModel)]="booking.phoneNumber" #phoneNumber="ngModel"
+              <input id="txtPhoneNumber" type="text" class="form-control" placeholder="Phone number" name="txtPhoneNumber" [(ngModel)]="profile.phoneNumber" #phoneNumber="ngModel"
                      required pattern="^[0-9]{3}[-\s]{0,1}[0-9]{3}[-\s]{0,1}[0-9]{4}$"/>
               @if (phoneNumber.invalid && (phoneNumber.touched || phoneNumber.dirty)){
                 @if(phoneNumber.errors?.['required']){
@@ -66,9 +55,47 @@
                 }
               }
             </div>
+            <div class="col-md-6">
+            <label for="txtEmail" class="form-label"></label>
+            <input id="txtEmail" type="text" class="form-control" placeholder="Email address" name="txtEmail" [(ngModel)]="profile.email" #email="ngModel"
+                   required pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}[\s]{0,1}$"/>
+            @if (email.invalid && (email.touched || email.dirty)){
+              @if(email.errors?.['required']){
+                <small class="text-danger">Your email address is required</small><br>
+              }
+              @if(email.errors?.['pattern']){
+                <small class="text-danger">Invalid email address format</small><br>
+              }
+            }
+          </div>
+            <!--Enter your address is optional-->
+            <div class="col-12">
+              <label for="txtAddress" class="form-label"></label>
+              <input type="text" class="form-control" id="txtAddress" placeholder="Address">
+            </div>
+            <div class="col-md-6">
+              <label for="txtCity" class="form-label"></label>
+              <input type="text" class="form-control" id="txtCity" placeholder="City">
+            </div>
+            <div class="col-md-4">
+              <label for="txtProvince" class="form-label"></label>
+              <input type="text" class="form-control" id="txtProvince" placeholder="Province">
+            </div>
+            <div class="col-md-2">
+              <label for="inputPostalCode" class="form-label"></label>
+              <input type="text" class="form-control" id="inputPostalCode" placeholder="Postal Code">
+            </div>
+            <h4 class="mt-4" style="color:steelblue">Create Username & Upload Profile Picture</h4>
+            <div class="col-md-4">
+              <div class="input-group">
+              <div class="input-group-text">&#64;</div>
+              <label for="txtUsername" class="form-label"></label>
+              <input id="txtUsername" type="text" class="form-control" placeholder="Username" name="txtUsername">
+            </div>
+            </div>
             <div class="mt-5 d-flex justify-content-center">
-              <button type="submit" [disabled]="bookForm.invalid" id="btnBook" class="btn btn-success btn-md"
-                      (click)="onBookClick(); bookForm.reset()" style="width: 300px;">Create Profile</button>
+              <button type="submit" [disabled]="profileForm.invalid" id="btnBook" class="btn btn-success btn-md"
+                      (click)="onProfileClick(); profileForm.reset()" style="width: 300px;">Create Profile</button>
             </div>
           </form>
         </div>
