@@ -62,7 +62,7 @@ export class DatabaseService {
           autoIncrement: true,
         });
 
-        //Significant Object Store for profiles
+        //Object Store for profiles
         const profileStore = this.db.createObjectStore("profile", {
           keyPath: "id", //id of profile class
           autoIncrement: true,

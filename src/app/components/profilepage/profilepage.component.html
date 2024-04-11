@@ -71,28 +71,47 @@
             <!--Enter your address is optional-->
             <div class="col-12">
               <label for="txtAddress" class="form-label"></label>
-              <input type="text" class="form-control" id="txtAddress" placeholder="Address">
+              <input type="text" class="form-control" id="txtAddress" placeholder="Address" name="txtAddress" [(ngModel)]="profile.address" #address="ngModel">
             </div>
             <div class="col-md-6">
               <label for="txtCity" class="form-label"></label>
-              <input type="text" class="form-control" id="txtCity" placeholder="City">
+              <input type="text" class="form-control" id="txtCity" placeholder="City" name="txtCity" [(ngModel)]="profile.city" #city="ngModel">
             </div>
             <div class="col-md-4">
               <label for="txtProvince" class="form-label"></label>
-              <input type="text" class="form-control" id="txtProvince" placeholder="Province">
+              <input type="text" class="form-control" id="txtProvince" placeholder="Province" name="txtProvince" [(ngModel)]="profile.province" #province="ngModel">
             </div>
             <div class="col-md-2">
               <label for="inputPostalCode" class="form-label"></label>
-              <input type="text" class="form-control" id="inputPostalCode" placeholder="Postal Code">
+              <input type="text" class="form-control" id="inputPostalCode" placeholder="Postal Code" name="txtPostalCode" [(ngModel)]="profile.postalCode" #postalCode="ngModel">
             </div>
             <h4 class="mt-4" style="color:steelblue">Create Username & Upload Profile Picture</h4>
             <div class="col-md-4">
-              <div class="input-group">
+              <div class="input-group mb-3">
               <div class="input-group-text">&#64;</div>
               <label for="txtUsername" class="form-label"></label>
-              <input id="txtUsername" type="text" class="form-control" placeholder="Username" name="txtUsername">
+              <input id="txtUsername" type="text" class="form-control" placeholder="Username" name="txtUsername"  [(ngModel)]="profile.username" #username="ngModel">
             </div>
             </div>
+
+            <!--Camera Functions -->
+            <div class="mb-3">
+              <div class="row">
+                <div class="col">
+                  <button class=" btn btn-primary container-fluid" (click)="onCapturePhotoClick()">Capture photo</button>
+                  <div class="m-3"></div>
+                </div>
+                <div class="col">
+                  <button class=" btn btn-dark container-fluid" (click)="onLoadFromLibraryClick()">Camera Roll</button>
+                  <div class="m-4"></div>
+                </div>
+              </div>
+              <div class=" text-center">
+
+              <img [src]="img" width="80%" alt="Image placeholder">
+              </div>
+            </div>
+
             <div class="mt-5 d-flex justify-content-center">
               <button type="submit" [disabled]="profileForm.invalid" id="btnBook" class="btn btn-success btn-md"
                       (click)="onProfileClick(); profileForm.reset()" style="width: 300px;">Create Profile</button>

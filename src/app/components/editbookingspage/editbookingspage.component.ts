@@ -3,6 +3,7 @@ import {FormsModule} from "@angular/forms";
 import {Booking} from "../../models/booking.model";
 import {BookingDALService} from "../../../services/bookingDAL.service";
 import {ActivatedRoute} from "@angular/router";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-editbookingspage',
@@ -20,6 +21,7 @@ export class EditbookingspageComponent {
   MIN_LENGTH = 2;
   dal = inject(BookingDALService) //importing crud functions from dal
   activatedRoute = inject(ActivatedRoute)
+  router = inject(Router)
 
   constructor() {
     const id: number = Number(this.activatedRoute.snapshot.paramMap.get("id"));
@@ -37,6 +39,7 @@ export class EditbookingspageComponent {
     this.dal.update(this.booking).then((data) => {
       console.log(data);
       alert("Your booking has been updated!");
+      this.router.navigate([`/viewbookings/`]);
     }).catch(e => {
       console.log("error " + e.message)
     })

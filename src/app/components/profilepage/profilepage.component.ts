@@ -2,6 +2,7 @@ import {Component, inject} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {Profile} from "../../models/profile.model";
 import {ProfileDALService} from "../../../services/profileDAL.service";
+import {CameraService} from "../../../services/camera.service";
 
 @Component({
   selector: 'app-profilepage',
@@ -21,6 +22,23 @@ export class ProfilepageComponent {
   constructor() {
   }
 
+  img :any;
+  cameraService = inject(CameraService);
+  onCapturePhotoClick() {
+    this.cameraService.capturePhoto().then((data)=>{
+      this.img =data;
+    }).catch((e)=>{
+      alert(e.toString());
+    });
+  }
+
+  onLoadFromLibraryClick() {
+    this.cameraService.loadPhotoFromLibrary().then((data) => {
+      this.img = data;
+    }).catch((e) => {
+      alert(e.toString());
+    });
+  }
   onProfileClick() {
 
     this.dal.insert(this.profile).then((data) => {
