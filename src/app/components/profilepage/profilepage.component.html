@@ -1,1 +1,124 @@
-<p>profilepage works!</p>
+
+<div class="container-fluid mt-5">
+  <div class="container">
+    <div class="container">
+      <div class="card">
+        <div class="card-header text-center bg-dark">
+          <h2 style="color:white">{{title}}</h2>
+        </div>
+        <div class="card-body">
+          <h4 style="color:steelblue">Your Information</h4>
+          <form #profileForm="ngForm" class="row g-3">
+            <div class="mb-3">
+              <div class="row">
+                <div class="col">
+                  <label class="mb-2" for="txtFirstName"></label>
+                  <input type="text" class="form-control" placeholder="First name" aria-label="txtFirstName" id="txtFirstName" name="txtFirstName"
+                         [(ngModel)]="profile.firstName" #firstName="ngModel"
+                         required [minlength] = "MIN_LENGTH">
+                  @if (firstName.invalid && (firstName.touched || firstName.dirty)){
+                    @if(firstName.errors?.['required']){
+                      <small class="text-danger">Your First name is required</small><br>
+                    }
+                    @if (firstName.errors?. ['minlength']){
+                      <small class="text-danger">Your First name must be at least {{MIN_LENGTH}} characters long</small><br>
+                    }
+                  }
+                </div>
+                <div class="col">
+                  <label class="mb-2" for="txtLastName"></label>
+                  <input type="text" class="form-control" placeholder="Last name" aria-label="txtLastName" id="txtLastName" name="txtLastName"
+                         [(ngModel)]="profile.lastName" #lastName="ngModel"
+                         required [minlength] = "MIN_LENGTH"/>
+                  @if (lastName.invalid && (firstName.touched || lastName.dirty)){
+                    @if(lastName.errors?.['required']){
+                      <small class="text-danger">Your Last name is required</small><br>
+                    }
+                    @if (lastName.errors?. ['minlength']){
+                      <small class="text-danger">Your Last name must be at least {{MIN_LENGTH}} characters long</small><br>
+                    }
+                  }
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="mb-2" for="txtPhoneNumber"></label>
+              <input id="txtPhoneNumber" type="text" class="form-control" placeholder="Phone number" name="txtPhoneNumber" [(ngModel)]="profile.phoneNumber" #phoneNumber="ngModel"
+                     required pattern="^[0-9]{3}[-\s]{0,1}[0-9]{3}[-\s]{0,1}[0-9]{4}$"/>
+              @if (phoneNumber.invalid && (phoneNumber.touched || phoneNumber.dirty)){
+                @if(phoneNumber.errors?.['required']){
+                  <small class="text-danger">Your phone number is required</small><br>
+                }
+                @if(phoneNumber.errors?.['pattern']){
+                  <small class="text-danger">Invalid phone number format</small><br>
+                }
+              }
+            </div>
+            <div class="col-md-6">
+            <label for="txtEmail" class="form-label"></label>
+            <input id="txtEmail" type="text" class="form-control" placeholder="Email address" name="txtEmail" [(ngModel)]="profile.email" #email="ngModel"
+                   required pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}[\s]{0,1}$"/>
+            @if (email.invalid && (email.touched || email.dirty)){
+              @if(email.errors?.['required']){
+                <small class="text-danger">Your email address is required</small><br>
+              }
+              @if(email.errors?.['pattern']){
+                <small class="text-danger">Invalid email address format</small><br>
+              }
+            }
+          </div>
+            <!--Enter your address is optional-->
+            <div class="col-12">
+              <label for="txtAddress" class="form-label"></label>
+              <input type="text" class="form-control" id="txtAddress" placeholder="Address" name="txtAddress" [(ngModel)]="profile.address" #address="ngModel">
+            </div>
+            <div class="col-md-6">
+              <label for="txtCity" class="form-label"></label>
+              <input type="text" class="form-control" id="txtCity" placeholder="City" name="txtCity" [(ngModel)]="profile.city" #city="ngModel">
+            </div>
+            <div class="col-md-4">
+              <label for="txtProvince" class="form-label"></label>
+              <input type="text" class="form-control" id="txtProvince" placeholder="Province" name="txtProvince" [(ngModel)]="profile.province" #province="ngModel">
+            </div>
+            <div class="col-md-2">
+              <label for="inputPostalCode" class="form-label"></label>
+              <input type="text" class="form-control" id="inputPostalCode" placeholder="Postal Code" name="txtPostalCode" [(ngModel)]="profile.postalCode" #postalCode="ngModel">
+            </div>
+            <h4 class="mt-4" style="color:steelblue">Create Username & Upload Profile Picture</h4>
+            <div class="col-md-4">
+              <div class="input-group mb-3">
+              <div class="input-group-text">&#64;</div>
+              <label for="txtUsername" class="form-label"></label>
+              <input id="txtUsername" type="text" class="form-control" placeholder="Username" name="txtUsername"  [(ngModel)]="profile.username" #username="ngModel">
+            </div>
+            </div>
+
+            <!--Camera Functions -->
+            <div class="mb-3">
+              <div class="row">
+                <div class="col">
+                  <button class=" btn btn-primary container-fluid" (click)="onCapturePhotoClick()">Capture photo</button>
+                  <div class="m-3"></div>
+                </div>
+                <div class="col">
+                  <button class=" btn btn-dark container-fluid" (click)="onLoadFromLibraryClick()">Camera Roll</button>
+                  <div class="m-4"></div>
+                </div>
+              </div>
+              <div class=" text-center">
+
+              <img [src]="img" width="80%" alt="Image placeholder">
+              </div>
+            </div>
+
+            <div class="mt-5 d-flex justify-content-center">
+              <button type="submit" [disabled]="profileForm.invalid" id="btnBook" class="btn btn-success btn-md"
+                      (click)="onProfileClick(); profileForm.reset()" style="width: 300px;">Create Profile</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

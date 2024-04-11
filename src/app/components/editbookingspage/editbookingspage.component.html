@@ -1,4 +1,3 @@
-
 <div class="container-fluid mt-5">
   <div class="container">
     <div class="container">
@@ -40,11 +39,11 @@
                   }
                 </div>
               </div>
- </div>
+            </div>
             <div class="mb-3">
               <label class="mb-2" for="txtEmail"></label>
               <input id="txtEmail" type="text" class="form-control" placeholder="Email address" name="txtEmail" [(ngModel)]="booking.email" #email="ngModel"
-                     required pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}[\s]{0,1}$"/>
+                     required pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}[\s]{0,1}$" />
               @if (email.invalid && (email.touched || email.dirty)){
                 @if(email.errors?.['required']){
                   <small class="text-danger">Your email address is required</small><br>
@@ -88,21 +87,12 @@
                          required [minlength] = "MIN_LENGTH"/>
                   @if (timeSlot.invalid && (timeSlot.touched || timeSlot.dirty)){
                     @if(timeSlot.errors?.['required']){
-                      <small class="text-danger">Please select a time</small><br>
+                      <small class="text-danger">Please pick a time</small><br>
                     }
                   }
                 </div>
               </div>
             </div>
-            <!--Sam to edit once he finishes court page-->
-            <h4 style="color:steelblue">Court Location</h4>
-            <div class="mb-3">
-              <label for="cmbCourtLocation" class="form-label"></label>
-              <select id="cmbCourtLocation" name="cmbCourtLocation" class="form-select">
-
-              </select>
-            </div>
-
             <h4 style="color:steelblue">Court Type</h4>
 
             <div class="mb-3">
@@ -126,14 +116,12 @@
             </div>
 
             <div class="mt-5 d-flex justify-content-center">
-              <button type="submit" [disabled]="bookForm.invalid" id="btnBook" class="btn btn-success btn-md"
-                      (click)="onBookClick(); bookForm.reset()" style="width: 300px;">Book</button>
+              <button type="submit" [disabled]="bookForm.invalid" id="btnEdit" class="btn btn-success btn-md"
+                      (click)="onEditClick()" style="width: 300px;">Update</button>
             </div>
           </form>
-        </div>
         </div>
       </div>
     </div>
   </div>
-
-
+</div>
