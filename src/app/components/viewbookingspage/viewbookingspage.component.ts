@@ -35,13 +35,15 @@ export class ViewbookingspageComponent {
       .then((data) => {
         console.log(data);
         this.viewAllBookings();
-        alert("Booking deleted successfully");
+        alert("Your Booking has been deleted");
       })
       .catch((err) => {
         console.log(err);
       })
   }
-
+  onEditClick(booking: Booking) {
+    this.router.navigate([`/editbookings/${booking.id}`]);
+  }
 
 
 }

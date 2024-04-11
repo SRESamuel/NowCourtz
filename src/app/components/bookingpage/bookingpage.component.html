@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../../../styles.css">
 <div class="container-fluid mt-5">
   <div class="container">
     <div class="container">
@@ -38,24 +39,30 @@
                   }
                 </div>
               </div>
-            </div>
+ </div>
             <div class="mb-3">
               <label class="mb-2" for="txtEmail"></label>
               <input id="txtEmail" type="text" class="form-control" placeholder="Email address" name="txtEmail" [(ngModel)]="booking.email" #email="ngModel"
-                     required [minlength] = "MIN_LENGTH"/>
+                     required pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}[\s]{0,1}$"/>
               @if (email.invalid && (email.touched || email.dirty)){
                 @if(email.errors?.['required']){
                   <small class="text-danger">Your email address is required</small><br>
+                }
+                @if(email.errors?.['pattern']){
+                  <small class="text-danger">Invalid email address format</small><br>
                 }
               }
             </div>
             <div class="mb-3">
               <label class="mb-2" for="txtPhoneNumber"></label>
               <input id="txtPhoneNumber" type="text" class="form-control" placeholder="Phone number" name="txtPhoneNumber" [(ngModel)]="booking.phoneNumber" #phoneNumber="ngModel"
-                     required [minlength] = "MIN_LENGTH"/>
+                     required pattern="^[0-9]{3}[-\s]{0,1}[0-9]{3}[-\s]{0,1}[0-9]{4}$"/>
               @if (phoneNumber.invalid && (phoneNumber.touched || phoneNumber.dirty)){
                 @if(phoneNumber.errors?.['required']){
                   <small class="text-danger">Your phone number is required</small><br>
+                }
+                @if(phoneNumber.errors?.['pattern']){
+                  <small class="text-danger">Invalid phone number format</small><br>
                 }
               }
             </div>
@@ -85,6 +92,14 @@
                   }
                 </div>
               </div>
+            </div>
+            <!--Sam to edit once he finishes court page-->
+            <h4 style="color:steelblue">Court Location</h4>
+            <div class="mb-3">
+              <label for="cmbCourtLocation" class="form-label"></label>
+              <select id="cmbCourtLocation" name="cmbCourtLocation" class="form-select">
+
+              </select>
             </div>
 
             <h4 style="color:steelblue">Court Type</h4>

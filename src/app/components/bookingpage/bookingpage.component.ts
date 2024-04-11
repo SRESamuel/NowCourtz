@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, FormBuilder, Validators, AbstractControl, ReactiveFormsModule, FormControl, FormGroup} from "@angular/forms";
 import {Booking} from "../../models/booking.model";
 import {BookingDALService} from "../../../services/dal.service";
 import {JsonPipe} from "@angular/common";

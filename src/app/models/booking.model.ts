@@ -1,14 +1,26 @@
 export class Booking{
-  fullName: string ="";
+  id: number| undefined
+  firstName: string ="";
+  lastName: string ="";
   email: string ="";
   phoneNumber: string ="";
+  datePicker: string;
   timeSlot: string ="";
+  courtType: string="";
 
-  constructor(fullName: string, email: string, phoneNumber: string, timeSlot: string) {
-    this.fullName = fullName;
+
+
+  constructor(firstName: string, lastName: string, email: string, phoneNumber: string,datePicker: string, timeSlot: string,courtType: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
     this.email = email;
     this.phoneNumber = phoneNumber;
+    this.datePicker = datePicker;
     this.timeSlot = timeSlot;
+    this.courtType = courtType;
+
+
+
   }
 }
 

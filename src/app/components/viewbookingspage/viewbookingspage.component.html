@@ -1,27 +1,31 @@
 <div class="m-4">
   <div class="card">
-    <div class="card-header">
-      <h2>All Court Bookings</h2>
+    <div class="card-header text-center bg-dark">
+      <h2 style="color:white">All Court Bookings</h2>
     </div>
     <div class="card-body">
-      <ul class="list-group">
-        @for (booking of bookings;track $index) {
-          <li class="list-group-item">
-            <button type="button" id="btnDelete" class="btn btn-danger btn-sm me-4"
-                    (click)="onDeleteClick(booking)">
-              Delete
-            </button> <!--Still working on layout for this-->
-            {{ booking.firstName }} {{booking.lastName}} {{booking.email}}{{booking.phoneNumber}}
-            {{ booking.courtType }} {{booking.timeSlot}}
-          </li>
-          <!--if no bookings found-->
-        } @empty {
-          <h4>No bookings in the system</h4>
-        }
-      </ul>
-    </div>
-    <div class="card-footer">
 
-    </div>
-  </div>
+        @for (booking of bookings;track $index) {
+            <div class="list-group">
+
+            <a class="list-group-item list-group-item-action mb-2">
+              <div class="d-flex w-100 justify-content-between">
+
+                <h5 class="mb-1">   {{ booking.courtType }}  </h5>
+                <small>{{booking.datePicker}} {{booking.timeSlot}}</small>
+              </div>
+              <p class="mb-1"> {{ booking.firstName }} {{booking.lastName}}</p>
+              <small><button type="button" id="btnEdit" class="btn btn-primary btn-sm me-3"
+                             (click)="onEditClick(booking)">Edit Booking</button>
+                <button type="button" id="btnDelete" class="btn btn-danger btn-sm me-4"
+                        (click)="onDeleteClick(booking)">Delete</button></small>
+            </a>
+          </div>
+        } @empty {
+          <h4>No Bookings in the System.</h4>
+             }
+
 </div>
+</div>
+</div>
+
