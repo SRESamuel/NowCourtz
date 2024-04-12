@@ -175,6 +175,30 @@ export class BookingDALService {
     });
   }
 
+
+  getCourtTypeById(id: number): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const transaction = this.database.db.transaction(['courtType'], 'readonly');
+      const store = transaction.objectStore('courtType');
+      const request = store.get(id); // Get the court type by id
+
+      request.onsuccess = (event: Event) => {
+        // @ts-ignore
+        const result = (event.target as IDBRequest).result;
+        if (result) {
+          resolve(result.courtType); // Resolve the court type
+        } else {
+          reject(new Error('Court type not found.'));
+        }
+      };
+
+      request.onerror = (event: Event) => {
+        reject(new Error('Error fetching court type.'));
+      };
+    });
+  }
+
+
 }
 
 

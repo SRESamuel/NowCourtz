@@ -7,8 +7,9 @@ export class Booking{
   datePicker: string;
   timeSlot: string ="";
   courtType: string="";
+  courtName: string= "";
 
-  constructor(firstName: string, lastName: string, email: string, phoneNumber: string,datePicker: string, timeSlot: string,courtType: string) {
+  constructor(firstName: string, lastName: string, email: string, phoneNumber: string,datePicker: string, timeSlot: string,courtType: string, courtName: string) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
@@ -16,6 +17,7 @@ export class Booking{
     this.datePicker = datePicker;
     this.timeSlot = timeSlot;
     this.courtType = courtType;
+    this.courtName = courtName;
 
   }
 }

@@ -20,7 +20,7 @@ import {NgForOf, NgIf} from "@angular/common";
 export class EditbookingspageComponent {
   title = "Edit a Booking";
   //courtTypes: string[] = ["Basketball", "Dodgeball", "Volleyball", "Tennis", "Squash"]
-  booking: Booking = new Booking("", "", "", "", "","","");
+  booking: Booking = new Booking("", "", "", "", "","","", "");
   MIN_LENGTH = 2;
   dal = inject(BookingDALService) //importing crud functions from dal
   activatedRoute = inject(ActivatedRoute)
@@ -39,17 +39,41 @@ export class EditbookingspageComponent {
       })
 
     this.dal.getCourtTypes().then((types) => {
-      this.courtTypes = types
-      this.booking.courtType = this.courtTypes[0]
-    }).catch((e) => {
-      //console.error(`Error: getting court types ${e.message}`)
+      this.courtTypes = types;
+      // Now that courtTypes is populated, get the current booking's court type
+      this.dal.select(id)
+        .then((data) => {
+          this.booking = data;
+          if (data.courtType) {
+            // Assuming data.courtType contains the id of the court type
+            this.dal.getCourtTypeById(data.courtType)
+              .then(courtTypeName => {
+                // Find the index of the court type name in the courtTypes array
+                const index = this.courtTypes.findIndex(ct => ct === courtTypeName);
+                if (index !== -1) {
+                  // Set the ngModel binding to the index
+                  this.booking.courtType = index.toString();
+                }
+              })
+              .catch(e => {
+//                console.error(`Error: getting court type by id ${e.message}`);
+              });
+          }
+        })
+        .catch((err) => {
+          console.error(`Error: selecting booking ${err.message}`);
+        });
     })
+      .catch((e) => {
+        console.error(`Error: getting court types ${e.message}`);
+      });
   }
 
 
-  trackByFn(index: number, item: any): any { // Function format from the documentation
-    return item.id; // Get the objects id which is in the storage
+  trackByFn(index: number, item: any): number {
+    return index;
   }
+
   onEditClick() {
 
     this.dal.update(this.booking).then((data) => {
