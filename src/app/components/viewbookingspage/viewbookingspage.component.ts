@@ -13,6 +13,7 @@ import {Router} from "@angular/router";
 export class ViewbookingspageComponent {
   bookings: Booking[] = [];
 
+
   dal = inject(BookingDALService)
   router = inject(Router)
 

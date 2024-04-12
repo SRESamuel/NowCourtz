@@ -9,9 +9,10 @@ export class Profile{
   province: string="";
   postalCode: string="";
   username: string="";
+  profileImage: string ="";
 
   constructor(firstName: string, lastName: string, email: string, phoneNumber: string,address: string, city: string,
-              province: string, postalCode: string, username: string) {
+              province: string, postalCode: string, username: string,  profileImage: string) {
 
     this.firstName = firstName;
     this.lastName = lastName;
@@ -22,6 +23,7 @@ export class Profile{
     this.province = province;
     this.postalCode = postalCode;
     this.username = username;
+    this.profileImage = profileImage;
 
   }
 }

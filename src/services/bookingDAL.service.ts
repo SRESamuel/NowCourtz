@@ -149,6 +149,7 @@ export class BookingDALService {
 
     });
   }
+  //courtType Object Store (look up) will have the following CRUD Functions (select all)
   getCourtTypes(): Promise<string[]> { // Method to get the court types
     return new Promise((resolve, reject) => {
       const transaction = this.database.db.transaction(["courtType"], "readonly");
@@ -176,36 +177,6 @@ export class BookingDALService {
 
 }
 
-  //courtType Object Store (look up) will have the following CRUD Functions (select all)
-
-
-    // selectAll(): Promise<Booking> {
-    //   return new Promise((resolve, reject) => {
-    //     const transaction = this.database.db.transaction(["courtType"], "readwrite");
-    //
-    //     transaction.oncomplete = (event: any) => {
-    //       console.log("Success: selectAll transaction successful");
-    //     };
-    //     transaction.onerror = (event: any) => {
-    //       console.log("Error: error in selectAll transaction: " + event);
-    //     };
-    //
-    //     const courtTypeStore = transaction.objectStore("courtType");
-    //     const req = courtTypeStore.getAll();
-    //
-    //     req.onsuccess = (event: any) => {
-    //       //returns the key of newly added item
-    //       console.log(`Success: selectAll ${event.target.result}`);
-    //       resolve(event.target.result);
-    //     };
-    //
-    //     req.onerror = (event: any) => {
-    //       console.log("Error: error in selectAll: " + event);
-    //       reject(event);
-    //     };
-    //   });
-    // }
 
 
 
-//}

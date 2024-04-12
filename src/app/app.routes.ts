@@ -7,7 +7,7 @@ import {AboutpageComponent} from "./components/aboutpage/aboutpage.component";
 import {ErrorpageComponent} from "./components/errorpage/errorpage.component";
 import {ViewbookingspageComponent} from "./components/viewbookingspage/viewbookingspage.component";
 import {EditbookingspageComponent} from "./components/editbookingspage/editbookingspage.component";
-import {EditlandingpageComponent} from "./components/editlandingpage/editlandingpage.component";
+
 
 export const routes: Routes = [
   {path: "home", component: HomepageComponent},

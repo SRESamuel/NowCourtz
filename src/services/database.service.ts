@@ -40,7 +40,7 @@ export class DatabaseService {
 
         //Look up Object Store for court types
         const courtTypeStore = this.db.createObjectStore("courtType", {
-          keyPath: "id", //id of court type?
+          keyPath: "id", //id of court type
           autoIncrement: true,
         });
 
@@ -49,7 +49,8 @@ export class DatabaseService {
           {courtType: "Volleyball"},
           {courtType: "Dodgeball"},
           {courtType: "Tennis"},
-          {courtType: "Squash"},
+          {courtType: "Pickleball"},
+          {courtType: "Squash"}
         ];
 
         seedData.forEach((item)=>{
