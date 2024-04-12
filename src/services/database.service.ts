@@ -1,4 +1,5 @@
 import {Injectable} from "@angular/core";
+import {Event} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -55,7 +56,6 @@ export class DatabaseService {
           courtTypeStore.add(item);
         });
 
-
         //Significant Object Store for booking of Courts
         const bookingsStore = this.db.createObjectStore("bookings", {
           keyPath: "id", //id of booking class
@@ -71,3 +71,5 @@ export class DatabaseService {
     });
   }
 }
+
+

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {RouterLink} from "@angular/router";
 
 @Component({
@@ -9,7 +9,7 @@ import {RouterLink} from "@angular/router";
   styleUrl: './navheader.component.css'
 })
 export class NavheaderComponent {
-  menuVal:boolean=false;
+  menuVal:boolean =false;
   menu_icon :string ='bi bi-list';
   menuOpen(){
     this.menuVal =! this.menuVal ;
@@ -18,5 +18,8 @@ export class NavheaderComponent {
   menuClose() {
     this.menuVal = false;
     this.menu_icon = 'bi bi-list';
+  }
+  stopClickPropagate(event: Event) {
+    event.stopPropagation(); // Prevent click from reaching the body
   }
 }

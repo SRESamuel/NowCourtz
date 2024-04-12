@@ -1,1 +1,68 @@
-<p>courtspage works!</p>
+<div class="container-fluid mt-5">
+  <div class="container">
+    <div class="container">
+      <div class="card">
+        <div class="card-header text-center bg-dark">
+          <h2 style="color:white">{{title}}</h2>
+        </div>
+        <div class="card-body">
+          <h4 style="color:steelblue"> Court Information</h4>
+          <form>
+            <div class="mb-3">
+              <div class="row">
+                <div class="col">
+                  <label class="mb-2" for="txtLocation"></label>
+                  <input type="text" class="form-control" placeholder="Enter Location" aria-label="txtFirstName" id="txtLocation" name="txtLocation">
+                  <div class="mt-3 d-flex justify-content-center">
+                    <button type="submit"  id="btnAdd" class="btn btn-success btn-md"
+                            style="width: 300px;">Add New Court Location</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h4 style="color:steelblue">Available Court Locations</h4>
+            <div class="card-body">
+                <div class="list-group">
+                  <a class="list-group-item list-group-item-action mb-2">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Location1</h5>
+                    </div>
+                    <small><button type="button" class="btn btn-primary btn-sm me-3">Edit Location</button>
+                      <button type="button" class="btn btn-danger btn-sm me-4">Delete</button></small>
+                  </a>
+                </div>
+            </div>
+            <div class="card-body">
+              <div class="list-group">
+                <a class="list-group-item list-group-item-action mb-2">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Location1</h5>
+                  </div>
+                  <small><button type="button" class="btn btn-primary btn-sm me-3">Edit Location</button>
+                    <button type="button"  class="btn btn-danger btn-sm me-4">Delete</button></small>
+                </a>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="list-group">
+                <a class="list-group-item list-group-item-action mb-2">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Location1</h5>
+                  </div>
+                  <small><button type="button" id="btnEdit" class="btn btn-primary btn-sm me-3">Edit Location</button>
+                    <button type="button" id="btnDelete" class="btn btn-danger btn-sm me-4">Delete</button></small>
+                </a>
+              </div>
+            </div>
+            <div class="mt-5 d-flex justify-content-center">
+              <button type="submit"  id="btnFindMe" class="btn btn-success btn-md"
+                      style="width: 300px;">Find My Location</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

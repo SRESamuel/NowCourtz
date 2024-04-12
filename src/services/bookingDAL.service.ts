@@ -1,10 +1,12 @@
 import {inject, Injectable} from '@angular/core';
 import {DatabaseService} from "./database.service";
 import {Booking} from "../app/models/booking.model";
+import {Event} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class BookingDALService {
 
   database = inject(DatabaseService)
@@ -147,11 +149,32 @@ export class BookingDALService {
 
     });
   }
+  getCourtTypes(): Promise<string[]> { // Method to get the court types
+    return new Promise((resolve, reject) => {
+      const transaction = this.database.db.transaction(["courtType"], "readonly");
+      const store = transaction.objectStore("courtType");
+      const courtTypes: string[] = [];
 
+      // Open a cursor to iterate over all records in the store
+      store.openCursor().onsuccess = (event: Event) => {
+        // @ts-ignore
+        const request = event.target as IDBRequest;
+        const cursor = request.result as IDBCursorWithValue | null;
+        if (cursor) {
+          courtTypes.push(cursor.value.courtType);
+          cursor.continue();
+        } else {
+          // No more entries, resolve the promise with the courtTypes array
+          resolve(courtTypes);
+        }
+      };
+      transaction.onerror = (event: Error) => {
+        reject(new Error("Error fetching court types."));
+      };
+    });
+  }
 
-
-
-
+}
 
   //courtType Object Store (look up) will have the following CRUD Functions (select all)
 
@@ -185,4 +208,4 @@ export class BookingDALService {
 
 
 
-}
+//}
