@@ -16,15 +16,13 @@ import {NgIf} from "@angular/common";
 })
 export class ViewprofilespageComponent {
   profiles: Profile[] = [];
-
   dal = inject(ProfileDALService)
   router = inject(Router)
 
   constructor() {
     this.viewAllProfiles()
   }
-
-
+// View profiles
   viewAllProfiles() {
     this.dal.selectAll().then((data) => {
       this.profiles = data;
@@ -46,10 +44,10 @@ export class ViewprofilespageComponent {
         console.log(err);
       })
   }
+  //edit profile by id
   onEditClick(profile: Profile) {
     this.router.navigate([`/editprofiles/${profile.id}`]);
   }
-
 
 }
 

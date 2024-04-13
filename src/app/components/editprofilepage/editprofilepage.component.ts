@@ -38,6 +38,8 @@ export class EditprofilepageComponent {
 
   profileImage :any;
   cameraService = inject(CameraService);
+
+  //Capture photo and save in profile image, placeholder in html
   onCapturePhotoClick() {
     this.cameraService.capturePhoto().then((data)=>{
       this.profile.profileImage =data;
@@ -55,7 +57,6 @@ export class EditprofilepageComponent {
   }
 
   onEditClick() {
-
     this.dal.update(this.profile).then((data) => {
       console.log(data);
       alert("Your profile has been Updated!");

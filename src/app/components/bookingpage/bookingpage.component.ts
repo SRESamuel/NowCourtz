@@ -3,6 +3,7 @@ import {FormsModule, FormBuilder, Validators, AbstractControl, ReactiveFormsModu
 import {Booking} from "../../../models/booking.model";
 import {BookingDALService} from "../../../services/bookingDAL.service";
 import {NgForOf, NgIf} from "@angular/common";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-bookingpage',
@@ -18,13 +19,13 @@ import {NgForOf, NgIf} from "@angular/common";
 })
 export class BookingpageComponent {
   title = "Book a Court";
-  //courtTypes: string[] = ["Basketball", "Dodgeball", "Volleyball", "Tennis", "Squash"] Hard coded
   booking: Booking = new Booking("", "", "", "", "","","", "");
   MIN_LENGTH = 2;
   dal = inject(BookingDALService) //importing crud functions from dal
   courtTypes : { name: string; id: number }[] = [];
   //courtLocationNames: string[] = [];
   courtLocation: { name: string; id: number }[] = [];
+  router = inject(Router)
 
   constructor() {
     this.dal.getCourtTypes().then((types) => {
@@ -66,6 +67,7 @@ export class BookingpageComponent {
      this.dal.insert(this.booking).then((data) => {
        console.log(data);
        alert("Your court has been booked!");
+       this.router.navigate([`/viewbookings/`]);
      }).catch(e => {
        console.log("error " + e.message)
      });

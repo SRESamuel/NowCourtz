@@ -19,7 +19,6 @@ import {NgForOf, NgIf} from "@angular/common";
 })
 export class EditbookingspageComponent{
   title = "Edit a Booking";
-  //courtTypes: string[] = ["Basketball", "Dodgeball", "Volleyball", "Tennis", "Squash"]
   booking: Booking = new Booking("", "", "", "", "","","", "");
   MIN_LENGTH = 2;
   dal = inject(BookingDALService) //importing crud functions from dal

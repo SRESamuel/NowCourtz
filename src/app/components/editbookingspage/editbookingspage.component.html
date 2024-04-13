@@ -55,7 +55,8 @@
             </div>
             <div class="mb-3">
               <label class="mb-2" for="txtPhoneNumber"></label>
-              <input id="txtPhoneNumber" type="text" class="form-control" placeholder="Phone number" name="txtPhoneNumber" [(ngModel)]="booking.phoneNumber" #phoneNumber="ngModel"
+              <input id="txtPhoneNumber" type="text" class="form-control" placeholder="Phone number" name="txtPhoneNumber" [(ngModel)]="booking.phoneNumber"
+                     #phoneNumber="ngModel"
                      required pattern="^[0-9]{3}[-\s]{0,1}[0-9]{3}[-\s]{0,1}[0-9]{4}$"/>
               @if (phoneNumber.invalid && (phoneNumber.touched || phoneNumber.dirty)){
                 @if(phoneNumber.errors?.['required']){

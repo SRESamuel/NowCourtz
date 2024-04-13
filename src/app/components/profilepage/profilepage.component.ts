@@ -19,8 +19,7 @@ import {Router} from "@angular/router";
 })
 export class ProfilepageComponent {
   title = "Create a Profile";
-  //delete the data afterward, put to empty string using for testing
-  profile: Profile = new Profile("Michael", "Scott", "test@gmail.com", "519-555-5555", "1 Main street","Scranton","ON","N1F 2R4","MScott","");
+  profile: Profile = new Profile("", "", "", "", "","","","","","");
   MIN_LENGTH = 2;
   dal = inject(ProfileDALService) //importing crud functions from dal
   router = inject(Router)
@@ -45,10 +44,13 @@ export class ProfilepageComponent {
     });
   }
 
+  //Setting and resetting the profile image to the default icon once profile is created
   defaultProfileImage: string = 'src/assets/img/profileIcon.png';
   resetForm(){
     this.profile.profileImage = this.defaultProfileImage
   }
+
+  //direct user to home page after profile is created
   onProfileClick() {
     this.dal.insert(this.profile).then((data) => {
       this.resetForm();
