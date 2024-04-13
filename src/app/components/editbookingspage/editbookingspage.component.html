@@ -93,12 +93,25 @@
                 </div>
               </div>
             </div>
-            <h4 style="color:steelblue">Court Type</h4>
 
+            <h4 style="color:steelblue">Court Location</h4>
+            <div class="mb-3">
+              <label for="cmbCourtLoc" class="form-label"></label>
+              <select id="cmbCourtLoc" name="cmbCourtLoc" class="form-select" [(ngModel)]="booking.courtType" #courtLoc="ngModel" required>
+                <option></option> <!-- Using the ngfor and track by for a quick look up of the storage -->
+              </select>
+              <div *ngIf="courtLoc.invalid && (courtLoc.touched || courtLoc.dirty)">
+                <small class="text-danger" *ngIf="courtLoc.errors?.['required']">Court Location is required. Select A Location!</small>
+              </div>
+            </div>
+
+            <h4 style="color:steelblue">Court Type</h4>
             <div class="mb-3">
               <label for="cmbCourtType" class="form-label"></label>
-              <select id="cmbCourtType" name="cmbCourtType" class="form-select" [(ngModel)]="booking.courtType" #courtType="ngModel" required>
-                <option *ngFor="let courtType of courtTypes; let i = index; trackBy: trackByFn" [value]="i">{{ courtType }}</option> <!-- Using the ngfor and track by for a quick look up of the storage -->
+              <select id="cmbCourtType" name="cmbCourtType" class="form-select" [(ngModel)]="booking.courtTypeFk" #courtType="ngModel" required>
+                <option *ngFor="let courtType of courtTypes" [ngValue]="courtType.id">
+                  {{ courtType.courtType }}
+                </option>
               </select>
               <div *ngIf="courtType.invalid && (courtType.touched || courtType.dirty)">
                 <small class="text-danger" *ngIf="courtType.errors?.['required']">Court Type is required. What sport do you want to play?</small>
