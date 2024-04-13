@@ -9,8 +9,8 @@
         <div class="card-body">
           <!--Profile Image will be default if image hasn't been taken or selected. Once image capture it will replace default image-->
           <div class=" text-center">
-            <img *ngIf ="profile.profileImage" [src]="profile.profileImage" width="125px" height="125px" alt="Profile Image" class="img-fluid rounded-circle profile" name="txtProfileImage" [(ngModel)]="profile.profileImage">
-            <img *ngIf ="!profile.profileImage" src="assets/img/profileIcon.png" width="125px" height="125px" alt="Profile Image" class="img-fluid rounded-circle profile" name="txtProfileImage" [(ngModel)]="profile.profileImage">
+            <img *ngIf ="profile.profileImage" [src]="profile.profileImage" width="125px" height="125px" alt="Profile Image" class="img rounded-circle profile" name="txtProfileImage" [(ngModel)]="profile.profileImage">
+            <img *ngIf ="!profile.profileImage" src="assets/img/profileIcon.png" width="125px" height="125px" alt="Profile Image" class="img rounded-circle profile" name="txtProfileImage" [(ngModel)]="profile.profileImage">
           </div>
           <h4 class="mt-2 text-center" style="color:steelblue">Your Information</h4>
           <form #profileForm="ngForm" class="row g-3">

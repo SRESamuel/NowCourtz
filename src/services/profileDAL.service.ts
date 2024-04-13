@@ -13,7 +13,7 @@ export class ProfileDALService {
 
   }
 
-//Profile Object Store will have the following CRUD Functions (Insert)
+//Profile Object Store will have the full CRUD Functions
   insert(profile: Profile): Promise<any> {
     return new Promise((resolve, reject) => {
       const transaction = this.database.db.transaction(["profile"], "readwrite");
