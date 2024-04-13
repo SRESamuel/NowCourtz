@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {FormsModule, FormBuilder, Validators, AbstractControl, ReactiveFormsModule, FormControl, FormGroup} from "@angular/forms";
-import {Booking} from "../../models/booking.model";
+import {Booking} from "../../../models/booking.model";
 import {BookingDALService} from "../../../services/bookingDAL.service";
 import {NgForOf, NgIf} from "@angular/common";
 

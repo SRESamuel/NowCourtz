@@ -1,29 +1,40 @@
 import {Component, inject} from '@angular/core';
-import {AbstractControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormsModule} from "@angular/forms";
+import {NgIf} from "@angular/common";
 import {Profile} from "../../../models/profile.model";
 import {ProfileDALService} from "../../../services/profileDAL.service";
 import {CameraService} from "../../../services/camera.service";
-import {NgIf} from "@angular/common";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
-  selector: 'app-profilepage',
+  selector: 'app-editprofilepage',
   standalone: true,
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    NgIf
-  ],
-  templateUrl: './profilepage.component.html',
-  styleUrl: './profilepage.component.css'
+    imports: [
+        FormsModule,
+        NgIf
+    ],
+  templateUrl: './editprofilepage.component.html',
+  styleUrl: './editprofilepage.component.css'
 })
-export class ProfilepageComponent {
-  title = "Create a Profile";
-  //delete the data afterward, put to empty string using for testing
-  profile: Profile = new Profile("Michael", "Scott", "test@gmail.com", "519-555-5555", "1 Main street","Scranton","ON","N1F 2R4","MScott","");
+export class EditprofilepageComponent {
+
+  title = "Edit Profile";
+  profile: Profile = new Profile("", "", "", "", "","","","","","");
   MIN_LENGTH = 2;
   dal = inject(ProfileDALService) //importing crud functions from dal
+  activatedRoute = inject(ActivatedRoute);
+  router = inject(Router);
   constructor() {
+    const id: number = Number(this.activatedRoute.snapshot.paramMap.get("id"));
+    this.dal.select(id)
+      .then((data)=>{
+        this.profile = data;
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
   }
+
 
   profileImage :any;
   cameraService = inject(CameraService);
@@ -43,14 +54,12 @@ export class ProfilepageComponent {
     });
   }
 
-  resetForm(){
-    this.profile.profileImage = 'assets/img/profileIcon.png'
-  }
-  onProfileClick() {
-    this.dal.insert(this.profile).then((data) => {
-      this.resetForm();
+  onEditClick() {
+
+    this.dal.update(this.profile).then((data) => {
       console.log(data);
-      alert("Your profile has been created!");
+      alert("Your profile has been Updated!");
+      this.router.navigate([`/viewprofiles/`]);
     }).catch(e => {
       console.log("error " + e.message)
     })
@@ -58,4 +67,5 @@ export class ProfilepageComponent {
   }
 
 }
+
 

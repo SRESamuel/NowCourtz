@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {Booking} from "../../models/booking.model";
+import {Booking} from "../../../models/booking.model";
 import {BookingDALService} from "../../../services/bookingDAL.service";
 import {Router} from "@angular/router";
 

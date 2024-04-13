@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.example.myapp" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Angular Cordova App</name>
-    <description>Sample Android app made from Angular project</description>
-    <author email="jbourne@spy.com" href="http://spy.com">
-        Jason Bourne
+    <name>Now Courtz</name>
+    <description>Sport Courts Booking App</description>
+    <author email="eestrada9744@conestogac.on.ca and bbroeckel3963@conestogac.on.ca" href="http://spy.com">
+      Samuel Estrada and Brittany Rogers 
     </author>
     <content src="index.html" />
     <allow-intent href="http://*/*" />

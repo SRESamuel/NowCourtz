@@ -7,6 +7,8 @@ import {AboutpageComponent} from "./components/aboutpage/aboutpage.component";
 import {ErrorpageComponent} from "./components/errorpage/errorpage.component";
 import {ViewbookingspageComponent} from "./components/viewbookingspage/viewbookingspage.component";
 import {EditbookingspageComponent} from "./components/editbookingspage/editbookingspage.component";
+import {EditprofilepageComponent} from "./components/editprofilepage/editprofilepage.component";
+import {ViewprofilespageComponent} from "./components/viewprofilespage/viewprofilespage.component";
 
 
 export const routes: Routes = [
@@ -16,6 +18,8 @@ export const routes: Routes = [
   {path: "editbookings/:id", component: EditbookingspageComponent},// id is to extract a specific booking
   {path: "viewbookings", component: ViewbookingspageComponent},
   {path: "profile", component: ProfilepageComponent},
+  {path: "editprofiles/:id", component: EditprofilepageComponent},// id is to extract a specific booking
+  {path: "viewprofiles", component: ViewprofilespageComponent},
   {path: "about", component: AboutpageComponent},
   {path: "", redirectTo: "/home", pathMatch: "full"}, //Redirecting to home page
   {path: "**", component: ErrorpageComponent},//This must be at the end of the list , paths will be match from top to bottom, if nothing matches this one will.
