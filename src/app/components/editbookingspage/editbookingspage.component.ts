@@ -75,6 +75,22 @@ export class EditbookingspageComponent {
   }
 
   onEditClick() {
+    // @ts-ignore
+    let selectedCourtType = this.courtTypes[this.booking.courtType];
+    const courtTypeIndex = Number(this.booking.courtType);
+    if (courtTypeIndex >= 0 && courtTypeIndex < this.courtTypes.length) {
+      // Assign the courtName using the index
+      this.booking.courtName = this.courtTypes[courtTypeIndex];
+    }
+    else {
+      console.log("error out of bounds")
+    }
+    // Build the booking object to include the courtType ID if necessary
+    let bookingData = {
+      ...this.booking,
+      courtTypeId: this.booking.courtType, // this holds the index of the selected court type
+      courtType: selectedCourtType
+    };
 
     this.dal.update(this.booking).then((data) => {
       console.log(data);
