@@ -2,16 +2,15 @@ import {Component, inject} from '@angular/core';
 import {FormsModule, FormBuilder, Validators, AbstractControl, ReactiveFormsModule, FormControl, FormGroup} from "@angular/forms";
 import {Booking} from "../../models/booking.model";
 import {BookingDALService} from "../../../services/bookingDAL.service";
-import {JsonPipe, NgForOf, NgIf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-bookingpage',
   standalone: true,
   imports: [
     FormsModule,
-    JsonPipe,
     NgIf,
-    NgForOf
+    NgForOf,
   ],
   templateUrl: './bookingpage.component.html',
   styleUrl: './bookingpage.component.css'
@@ -23,46 +22,53 @@ export class BookingpageComponent {
   booking: Booking = new Booking("", "", "", "", "","","", "");
   MIN_LENGTH = 2;
   dal = inject(BookingDALService) //importing crud functions from dal
-  courtTypes : string[] = [];
-  nameCourts : string[] = [];
+  courtTypes : { name: string; id: number }[] = [];
+  //courtLocationNames: string[] = [];
+  courtLocation: { name: string; id: number }[] = [];
+
   constructor() {
     this.dal.getCourtTypes().then((types) => {
-      this.nameCourts = types;
       this.courtTypes = types;
-      this.booking.courtType = this.courtTypes[0];
     }).catch((e) => {
       //console.error(`Error: getting court types ${e.message}`)
     })
+
+    this.dal.getCourtLocationNames().then((loo) => {
+      this.courtLocation = loo
+    }).catch((e) => {
+      console.log(`Error: ${e}`)
+    })
+
   }
 
-  trackByFn(index: number, item: any): number { // Function format from the documentation
-    return index; // Get the objects id which is in the storage
-  }
+
+  // trackByFn(index: number, item: any): number { // Function format from the documentation
+  //   return index; // Get the objects id which is in the storage
+  // }
 
   onBookClick() {
-    // @ts-ignore
-    let selectedCourtType = this.courtTypes[this.booking.courtType];
-    const courtTypeIndex = Number(this.booking.courtType);
-    if (courtTypeIndex >= 0 && courtTypeIndex < this.courtTypes.length) {
-      // Assign the courtName using the index
-      this.booking.courtName = this.courtTypes[courtTypeIndex];
+
+    const selectedCourtTypeName = this.booking.courtType; // Get the location name of the court from the booking
+    // Look for the selected name in the object store of locations
+    const selectedType = this.courtTypes.find(location => location.name === selectedCourtTypeName);
+    if (selectedType) { // If found set the id to the fk
+      this.booking.courtTypeFk = selectedType.id; // Set the foreign key for court location
     }
-    else {
-      console.log("error out of bounds")
+
+    const selectedLocationName = this.booking.courtLoc; // Get the location name of the court from the booking
+    // Look for the selected name in the object store of locations
+    const selectedLocation = this.courtLocation.find(location => location.name === selectedLocationName);
+    if (selectedLocation) { // If found set the id to the fk
+      this.booking.courtLocFk = selectedLocation.id; // Set the foreign key for court location
     }
-    // Build the booking object to include the courtType ID if necessary
-    let bookingData = {
-      ...this.booking,
-      courtTypeId: this.booking.courtType, // this holds the index of the selected court type
-      courtType: selectedCourtType
-    };
+
+    // like a getCourtTypeIdByName() method in your dal service.
      this.dal.insert(this.booking).then((data) => {
        console.log(data);
        alert("Your court has been booked!");
      }).catch(e => {
        console.log("error " + e.message)
-     })
-
+     });
    }
 
-}
+  }

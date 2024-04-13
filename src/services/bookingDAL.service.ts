@@ -149,51 +149,83 @@ export class BookingDALService {
 
     });
   }
-  //courtType Object Store (look up) will have the following CRUD Functions (select all)
-  getCourtTypes(): Promise<string[]> { // Method to get the court types
-    return new Promise((resolve, reject) => {
-      const transaction = this.database.db.transaction(["courtType"], "readonly");
-      const store = transaction.objectStore("courtType");
-      const courtTypes: string[] = [];
 
-      // Open a cursor to iterate over all records in the store
-      store.openCursor().onsuccess = (event: Event) => {
+  getCourtTypesById(selectedId: number | undefined): Promise<{ courtType: string, id: number }[]> {
+    return new Promise((resolve, reject) => {
+      const transaction = this.database.db.transaction(['courtType'], 'readonly');
+      const store = transaction.objectStore('courtType');
+      let courtTypes = [];
+
+      // @ts-ignore
+      store.getAll().onsuccess = (event) => {
         // @ts-ignore
-        const request = event.target as IDBRequest;
-        const cursor = request.result as IDBCursorWithValue | null;
-        if (cursor) {
-          courtTypes.push(cursor.value.courtType);
-          cursor.continue();
-        } else {
-          // No more entries, resolve the promise with the courtTypes array
-          resolve(courtTypes);
+        courtTypes = event.target.result;
+
+        if (selectedId !== undefined) {
+          // Move the selected item to the beginning of the array
+          // @ts-ignore
+          courtTypes.sort((a, b) => {
+            if (a.id === selectedId) return -1;
+            if (b.id === selectedId) return 1;
+            return 0;
+          });
         }
+        resolve(courtTypes);
       };
-      transaction.onerror = (event: Error) => {
-        reject(new Error("Error fetching court types."));
+      // @ts-ignore
+      transaction.onerror = (event) => {
+        reject(new Error('Error fetching court types.'));
       };
     });
   }
 
 
-  getCourtTypeById(id: number): Promise<string> {
+  //courtType Object Store (look up) will have the following CRUD Functions (select all)
+  getCourtTypes(): Promise<{ name: string; id: number }[]> {
     return new Promise((resolve, reject) => {
       const transaction = this.database.db.transaction(['courtType'], 'readonly');
       const store = transaction.objectStore('courtType');
-      const request = store.get(id); // Get the court type by id
+      const courtTypes: { name: string; id: number }[] = [];
 
-      request.onsuccess = (event: Event) => {
-        // @ts-ignore
-        const result = (event.target as IDBRequest).result;
-        if (result) {
-          resolve(result.courtType); // Resolve the court type
+      // @ts-ignore
+      store.openCursor().onsuccess = (event) => {
+        const cursor = (event.target as IDBRequest).result as IDBCursorWithValue;
+        if (cursor) {
+          courtTypes.push({ name: cursor.value.courtType, id: cursor.value.id }); // Assuming 'courtType' is the name property in your stored objects
+          cursor.continue();
         } else {
-          reject(new Error('Court type not found.'));
+          resolve(courtTypes);
         }
       };
+      // @ts-ignore
+      transaction.onerror = (event) => {
+        reject(new Error('Transaction error: ' + event.target.errorCode));
+      };
+      // @ts-ignore
+      store.openCursor().onerror = (event) => {
+        reject(new Error('Cursor error: ' + event.target.errorCode));
+      };
+    });
+  }
 
-      request.onerror = (event: Event) => {
-        reject(new Error('Error fetching court type.'));
+  getCourtLocationNames(): Promise<{ name: string; id: number }[]> {
+    return new Promise((resolve, reject) => {
+      const transaction = this.database.db.transaction(['courtLocations'], 'readonly');
+      const store = transaction.objectStore('courtLocations');
+      const locations: { name: string; id: number }[] = []; // Get the name and the id along with it
+      // @ts-ignore
+      store.openCursor().onsuccess = (event) => {
+        const cursor = event.target.result;
+        if (cursor) {
+          locations.push({ name: cursor.value.name, id: cursor.value.id }); // Collect both name and id
+          cursor.continue();
+        } else {
+          resolve(locations); // All names and ids have been collected
+        }
+      };
+      // @ts-ignore
+      store.openCursor().onerror = (event) => {
+        reject(event.target.error);
       };
     });
   }
