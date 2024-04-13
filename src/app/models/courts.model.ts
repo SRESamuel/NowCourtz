@@ -1,10 +1,13 @@
 export class Court{
-  id: number| undefined;
-  log: number| undefined;
+  lat: number| undefined;
+  lon: number| undefined;
 
-  constructor() {
-
+  constructor(lon: number| undefined, lat: number | undefined) {
+    this.lon = lon;
+    this.lat = lat;
   }
+
+
 }
 
 

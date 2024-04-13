@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
+
 export class GeoService {
 
   getCurrLocation () : Promise<any> {
@@ -10,7 +11,6 @@ export class GeoService {
 
       const options = {
         timeout: 1000,
-        maximumAge: 0,
         enableHighAccuracy: true
       };
 

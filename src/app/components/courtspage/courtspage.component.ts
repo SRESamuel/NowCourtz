@@ -3,22 +3,18 @@ import {GeoService} from "../../../services/geo.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
 
+
 declare const H: any ;
 
 @Component({
   selector: 'app-courtspage',
   standalone: true,
-  imports: [
-    FormsModule,
-    NgForOf,
-    NgIf,
-    ReactiveFormsModule
-  ],
+  imports: [FormsModule, NgForOf, NgIf, ReactiveFormsModule],
   templateUrl: './courtspage.component.html',
   styleUrl: './courtspage.component.css'
 })
-export class CourtspageComponent  {
-  title: string = "Courts now"
+export class CourtspageComponent{
+  title: string = "Courts"
   geoService: GeoService = inject(GeoService)
   position: any;
   error: any;
@@ -33,26 +29,24 @@ export class CourtspageComponent  {
       this.error = "";
       this.showMap();
     }).catch((e) => {
-      console.log(e)
+      console.log(e);
       this.error = e;
-    })
+    });
   }
 
-
-  public showMap() {
+  private showMap() {
     console.log("showing map: ")
     document.getElementById('mapContainer')!.innerHTML = '';
-
-    // Initialize the platform object:
+    console.log()
     var platform = new H.service.Platform({
-      'apikey': 'QxVjzHmppcev_KgPDIhgx9abZCHyAhIM49sHWP9vtK8'// Are own API key
+      'apikey': 'QxVjzHmppcev_KgPDIhgx9abZCHyAhIM49sHWP9vtK8'
     });
 
     // Obtain the default map types from the platform object
     var maptypes = platform.createDefaultLayers();
 
     var options = {
-      zoom: 10,
+      zoom: 15,
       center: {
         lat: this.lat, lng: this.lon
       }
@@ -65,13 +59,14 @@ export class CourtspageComponent  {
       options
     );
 
-    var icon = new H.map.Icon('assets/img/Thor-small.png');
+    var icon = new H.map.Icon('assets/img/myLocation.png');
+    console.log({icon})
     var marker = new H.map.Marker({
       lat: this.lat, lng: this.lon
     }, {icon: icon});
-
     // Add the marker to the map and center the map at the location of the marker:
     map.addObject(marker);
   }
 
 }
+
