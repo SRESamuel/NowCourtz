@@ -10,7 +10,7 @@ export class GeoService {
     return new Promise<any>((resolve, reject) => {
 
       const options = {
-        timeout: 1000,
+        timeout: 3000,
         enableHighAccuracy: true
       };
 

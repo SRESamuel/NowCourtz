@@ -59,7 +59,7 @@ export class CourtspageComponent{
       options
     );
 
-    var icon = new H.map.Icon('assets/img/myLocation.png');
+    var icon = new H.map.Icon('assets/img/loc-pin.png');
     console.log({icon})
     var marker = new H.map.Marker({
       lat: this.lat, lng: this.lon
