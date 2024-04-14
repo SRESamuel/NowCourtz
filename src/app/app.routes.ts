@@ -24,7 +24,7 @@ export const routes: Routes = [
   { path: 'member', component: MemberpageComponent },
   {path: "viewmembers", component: ViewallmemberspageComponent},
   {path: "editmember/:id", component: EditmemberpageComponent},
-  {path: "editprofiles/:id", component: EditprofilepageComponent},// id is to extract a specific booking
+  {path: "editprofiles/:id", component: EditprofilepageComponent},// id is to extract a specific profile
   {path: "viewprofiles", component: ViewprofilespageComponent},
   {path: "about", component: AboutpageComponent},
   {path: "", redirectTo: "/home", pathMatch: "full"}, //Redirecting to home page

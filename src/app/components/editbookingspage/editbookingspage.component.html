@@ -109,14 +109,13 @@
             <div class="mb-3">
               <label for="cmbCourtType" class="form-label"></label>
               <select id="cmbCourtType" name="cmbCourtType" class="form-select" [(ngModel)]="booking.courtType" #courtType="ngModel" required>
-                <!--                <option *ngFor="let item of courtTypes; index as i; trackBy: trackByFn" [value]="item[i]">{{ item }}</option> &lt;!&ndash; Using the ngfor and track by for a quick look up of the storage &ndash;&gt;-->
+                <!--Using the ngfor and track by for a quick look up of the storage-->
                 <option *ngFor="let courtType of courtTypes" [value]="courtType.name">{{ courtType.name }}</option>
               </select>
               <div *ngIf="courtType.invalid && (courtType.touched || courtType.dirty)">
                 <small class="text-danger" *ngIf="courtType.errors?.['required']">Court Type is required. What sport do you want to play?</small>
               </div>
             </div>
-
 
             <div class="mt-5 d-flex justify-content-center">
               <button type="submit" [disabled]="bookForm.invalid" id="btnEdit" class="btn btn-success btn-md"

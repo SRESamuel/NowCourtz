@@ -1,6 +1,5 @@
 import {inject, Injectable} from '@angular/core';
 import {DatabaseService} from "./database.service";
-import {Booking} from "../models/booking.model";
 import {Member} from "../models/member.model";
 
 @Injectable({
@@ -150,6 +149,5 @@ export class MembersDALService {
 
     });
   }
-
 
 }

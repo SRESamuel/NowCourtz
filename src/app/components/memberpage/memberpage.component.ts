@@ -2,7 +2,6 @@ import {Component, inject} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
 import {Member} from "../../../models/member.model";
-import {BookingDALService} from "../../../services/bookingDAL.service";
 import {MembersDALService} from "../../../services/members-dal.service";
 import {Router} from "@angular/router";
 

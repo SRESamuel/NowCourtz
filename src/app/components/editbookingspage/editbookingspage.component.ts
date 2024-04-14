@@ -54,29 +54,6 @@ export class EditbookingspageComponent{
         console.error(err);
       });
   }
-   // loadBooking(id: number) {
-   //   this.dal.select(id).then((data) => {
-   //    this.booking = data;
-   //    // After booking is loaded, fetch the court types
-   //   this.loadCourtTypes(this.booking.courtTypeFk);})
-   //     .catch((err) => {
-   //    console.error(err);
-   //  });
-   // }
-
-  //  loadCourtTypes(selectedCourtTypeId: number | undefined) {
-  //   this.dal.getCourtTypesById(selectedCourtTypeId).then((courtTypesWithSelectedFirst) => {
-  //     this.courtTypes = courtTypesWithSelectedFirst;
-  //   }).catch(error => {
-  //     console.error('Error fetching court types', error);
-  //   });
-  // }
-
-
-
-  // trackByFn(index: number, item: any): number {
-  //   return index;
-  // }
 
   onEditClick() {
     const selectedCourtTypeName = this.booking.courtType; // Get the location name of the court from the booking

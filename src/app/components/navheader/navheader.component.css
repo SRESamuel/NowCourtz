@@ -1,9 +1,9 @@
 header {
-  position: fixed; /* or 'sticky' if you prefer */
+  position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1000; /* higher than the content z-index */
-  background: #cce1ec; /* assuming you want a background */
+  z-index: 1000;
+  background: #cce1ec;
 }
 
 .logo {

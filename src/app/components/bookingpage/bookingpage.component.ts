@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {FormsModule, FormBuilder, Validators, AbstractControl, ReactiveFormsModule, FormControl, FormGroup} from "@angular/forms";
+import {FormsModule} from "@angular/forms";
 import {Booking} from "../../../models/booking.model";
 import {BookingDALService} from "../../../services/bookingDAL.service";
 import {NgForOf, NgIf} from "@angular/common";
@@ -41,12 +41,6 @@ export class BookingpageComponent {
     })
 
   }
-
-
-  // trackByFn(index: number, item: any): number { // Function format from the documentation
-  //   return index; // Get the objects id which is in the storage
-  // }
-
   onBookClick() {
 
     const selectedCourtTypeName = this.booking.courtType; // Get the location name of the court from the booking

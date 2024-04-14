@@ -1,7 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {DatabaseService} from "./database.service";
 import {Booking} from "../models/booking.model";
-import {Event} from "@angular/router";
+
 
 @Injectable({
   providedIn: 'root'

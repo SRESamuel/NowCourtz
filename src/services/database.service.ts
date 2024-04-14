@@ -1,5 +1,4 @@
 import {Injectable} from "@angular/core";
-import {Event} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -84,7 +83,7 @@ export class DatabaseService {
           autoIncrement: true,
         });
 
-        //Object Store for profiles
+        //Significant Object Store for profiles
         const profileStore = this.db.createObjectStore("profile", {
           keyPath: "id", //id of profile class
           autoIncrement: true,

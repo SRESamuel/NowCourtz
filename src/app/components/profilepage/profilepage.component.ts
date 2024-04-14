@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {AbstractControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {Profile} from "../../../models/profile.model";
 import {ProfileDALService} from "../../../services/profileDAL.service";
 import {CameraService} from "../../../services/camera.service";
