@@ -7,8 +7,6 @@
         </div>
         <div class="card-body">
           <h4 style="color:steelblue"> Court Information</h4>
-          <div class="mb-3">
-          </div>
           <h4 style="color:steelblue">Available Court Locations</h4>
           <div class="card-body">
             <div class="list-group">
@@ -17,8 +15,8 @@
                   <h5 class="mb-1">{{ locOneName }}</h5>
                 </div>
                 <small>
-                  <button type="button" class="btn btn-primary btn-sm me-3">View Who's Going</button>
-                  <button type="button" class="btn btn-primary btn-sm me-3">Join</button>
+                  <button type="button" class="btn btn-primary btn-sm me-3" (click)="onViewMembers()">View Who's Going</button>
+                  <button type="button" id="btnMember" class="btn btn-primary btn-sm me-3" (click)="onCreateMember()">Join</button>
                 </small>
                 <div class="mt-3" id="mapCLoc1" style="width: auto; height: 400px"></div>
               </a>
@@ -31,8 +29,8 @@
                   <h5 class="mb-1">{{ locTwoName}}</h5>
                 </div>
                 <small>
-                  <button type="button" class="btn btn-primary btn-sm me-3">View Who's Going</button>
-                  <button type="button" class="btn btn-primary btn-sm me-3">Join</button>
+                  <button type="button" class="btn btn-primary btn-sm me-3" (click)="onViewMembers()">View Who's Going</button>
+                  <button type="button" class="btn btn-primary btn-sm me-3" (click)="onCreateMember()">Join</button>
                 </small>
                 <div class="mt-3" id="mapCLoc2" style="width: auto; height: 400px"></div>
               </a>
@@ -45,8 +43,8 @@
                   <h5 class="mb-1">{{ locThirdName }}</h5>
                 </div>
                 <small>
-                  <button type="button" id="btnView" class="btn btn-primary btn-sm me-3">View Who's Going</button>
-                  <button type="button" id="btnGoing" class="btn btn-primary btn-sm me-3">Join</button>
+                  <button type="button" class="btn btn-primary btn-sm me-3" (click)="onViewMembers()">View Who's Going</button>
+                  <button type="button" class="btn btn-primary btn-sm me-3" (click)="onCreateMember()">Join</button>
                 </small>
                 <div class="mt-3" id="mapCLoc3" style="width: auto; height: 400px"></div>
               </a>

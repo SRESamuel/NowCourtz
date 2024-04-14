@@ -150,35 +150,34 @@ export class BookingDALService {
     });
   }
 
-  getCourtTypesById(selectedId: number | undefined): Promise<{ courtType: string, id: number }[]> {
-    return new Promise((resolve, reject) => {
-      const transaction = this.database.db.transaction(['courtType'], 'readonly');
-      const store = transaction.objectStore('courtType');
-      let courtTypes = [];
-
-      // @ts-ignore
-      store.getAll().onsuccess = (event) => {
-        // @ts-ignore
-        courtTypes = event.target.result;
-
-        if (selectedId !== undefined) {
-          // Move the selected item to the beginning of the array
-          // @ts-ignore
-          courtTypes.sort((a, b) => {
-            if (a.id === selectedId) return -1;
-            if (b.id === selectedId) return 1;
-            return 0;
-          });
-        }
-        resolve(courtTypes);
-      };
-      // @ts-ignore
-      transaction.onerror = (event) => {
-        reject(new Error('Error fetching court types.'));
-      };
-    });
-  }
-
+  // getCourtTypesById(selectedId: number | undefined): Promise<{ courtType: string, id: number }[]> {
+  //   return new Promise((resolve, reject) => {
+  //     const transaction = this.database.db.transaction(['courtType'], 'readonly');
+  //     const store = transaction.objectStore('courtType');
+  //     let courtTypes = [];
+  //
+  //     // @ts-ignore
+  //     store.getAll().onsuccess = (event) => {
+  //       // @ts-ignore
+  //       courtTypes = event.target.result;
+  //
+  //       if (selectedId !== undefined) {
+  //         // Move the selected item to the beginning of the array
+  //         // @ts-ignore
+  //         courtTypes.sort((a, b) => {
+  //           if (a.id === selectedId) return -1;
+  //           if (b.id === selectedId) return 1;
+  //           return 0;
+  //         });
+  //       }
+  //       resolve(courtTypes);
+  //     };
+  //     // @ts-ignore
+  //     transaction.onerror = (event) => {
+  //       reject(new Error('Error fetching court types.'));
+  //     };
+  //   });
+  // }
 
   //courtType Object Store (look up) will have the following CRUD Functions (select all)
   getCourtTypes(): Promise<{ name: string; id: number }[]> {
@@ -229,7 +228,6 @@ export class BookingDALService {
       };
     });
   }
-
 
 }
 

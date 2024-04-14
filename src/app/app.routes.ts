@@ -9,6 +9,9 @@ import {ViewbookingspageComponent} from "./components/viewbookingspage/viewbooki
 import {EditbookingspageComponent} from "./components/editbookingspage/editbookingspage.component";
 import {EditprofilepageComponent} from "./components/editprofilepage/editprofilepage.component";
 import {ViewprofilespageComponent} from "./components/viewprofilespage/viewprofilespage.component";
+import {MemberpageComponent} from "./components/memberpage/memberpage.component";
+import {ViewallmemberspageComponent} from "./components/viewallmemberspage/viewallmemberspage.component";
+import {EditmemberpageComponent} from "./components/editmemberpage/editmemberpage.component";
 
 
 export const routes: Routes = [
@@ -18,6 +21,9 @@ export const routes: Routes = [
   {path: "editbookings/:id", component: EditbookingspageComponent},// id is to extract a specific booking
   {path: "viewbookings", component: ViewbookingspageComponent},
   {path: "profile", component: ProfilepageComponent},
+  {path: "member", component: MemberpageComponent},
+  {path: "viewmembers", component: ViewallmemberspageComponent},
+  {path: "editmember/:id", component: EditmemberpageComponent},
   {path: "editprofiles/:id", component: EditprofilepageComponent},// id is to extract a specific booking
   {path: "viewprofiles", component: ViewprofilespageComponent},
   {path: "about", component: AboutpageComponent},

@@ -89,6 +89,12 @@ export class DatabaseService {
           keyPath: "id", //id of profile class
           autoIncrement: true,
         });
+
+        //Significant Object Store for members going to courts
+        const MembersStore = this.db.createObjectStore("memebers", {
+          keyPath: "id", //id of booking class
+          autoIncrement: true,
+        });
       };
     });
   }

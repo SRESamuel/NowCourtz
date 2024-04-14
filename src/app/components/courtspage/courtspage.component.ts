@@ -2,6 +2,7 @@ import {Component, inject, OnInit} from '@angular/core';
 import {GeoService} from "../../../services/geo.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
+import {ActivatedRoute, Router} from "@angular/router";
 
 
 declare const H: any ;
@@ -23,6 +24,17 @@ export class CourtspageComponent implements OnInit{
   locOneName : string;
   locTwoName : string;
   locThirdName : string;
+  router = inject(Router)
+  activatedRoute = inject(ActivatedRoute)
+
+  onCreateMember() {
+    this.router.navigate([`/member/`]);
+  }
+
+  onViewMembers() {
+    this.router.navigate([`/viewmembers/`]);
+  }
+
 
 
   courtLocations = [
@@ -137,5 +149,7 @@ export class CourtspageComponent implements OnInit{
     // Re-center the map to ensure all markers are visible
     map.getViewModel().setLookAtData({bounds: map.getObjects().getBoundingBox()});
   }
+
+
 }
 
