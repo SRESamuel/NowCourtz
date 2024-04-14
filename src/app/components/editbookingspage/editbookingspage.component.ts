@@ -49,7 +49,7 @@ export class EditbookingspageComponent{
     this.dal.select(id).then((data) => {
       this.booking = data;
       // After booking is loaded, fetch the court types
-      ;})
+      })
       .catch((err) => {
         console.error(err);
       });

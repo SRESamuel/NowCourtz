@@ -91,7 +91,7 @@ export class DatabaseService {
         });
 
         //Significant Object Store for members going to courts
-        const MembersStore = this.db.createObjectStore("memebers", {
+        const MembersStore = this.db.createObjectStore("members", {
           keyPath: "id", //id of booking class
           autoIncrement: true,
         });

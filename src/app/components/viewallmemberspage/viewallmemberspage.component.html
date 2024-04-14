@@ -1,1 +1,30 @@
-<p>viewallmemberspage works!</p>
+<div class="m-4">
+  <div class="card">
+    <div class="card-header text-center bg-dark">
+      <h2 style="color:white">All Joined Members</h2>
+    </div>
+    <div class="card-body">
+      @for (m of member;track $index) {
+        <div class="list-group">
+
+          <a class="list-group-item list-group-item-action mb-2">
+            <div class="d-flex w-100 justify-content-between">
+
+              <h5 class="mb-1">{{ m.firstName}} - {{ m.lastName}} </h5>
+            </div>
+            <p class="mb-1"> {{ m.email}}</p>
+            <small><button type="button" id="btnEdit" class="btn btn-primary btn-sm me-3"
+                           (click)="onEditClick(m)">Edit Booking</button>
+              <button type="button" id="btnDelete" class="btn btn-danger btn-sm me-4"
+                      (click)="onDeleteClick(m)">Delete</button></small>
+          </a>
+        </div>
+      }
+      @empty
+      {
+        <h4>Someone has yet to join!</h4>
+      }
+    </div>
+  </div>
+</div>
+

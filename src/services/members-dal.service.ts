@@ -15,7 +15,7 @@ export class MembersDALService {
 //Booking Object Store will have the following CRUD Functions (Insert, update, delete, select, select all)
   insert(member: Member): Promise<any> {
     return new Promise((resolve, reject) => {
-      const transaction = this.database.db.transaction(["memebers"], "readwrite");
+      const transaction = this.database.db.transaction(["members"], "readwrite");
 
       transaction.oncomplete = (event: any) => {
         console.log("Success: insert transaction successful");
@@ -24,12 +24,12 @@ export class MembersDALService {
         console.log("Error: error in insert transaction: " + event);
       };
 
-      const memeberStore = transaction.objectStore("memebers");
+      const memeberStore = transaction.objectStore("members");
       const req = memeberStore.add(member);
 
       req.onsuccess = (event: any) => {
         //returns the key of newly added item
-        console.log(`Success: A memeber is confirmed ${event.target.result}`);
+        console.log(`Success: A members is confirmed ${event.target.result}`);
         resolve(event.target.result);
       };
 
@@ -42,7 +42,7 @@ export class MembersDALService {
 
   update(memeber: Member): Promise<any> {
     return new Promise((resolve, reject) => {
-      const transaction = this.database.db.transaction(["memebers"], "readwrite");
+      const transaction = this.database.db.transaction(["members"], "readwrite");
 
       transaction.oncomplete = (event: any) => {
         console.log("Success: update transaction successful");
@@ -51,12 +51,12 @@ export class MembersDALService {
         console.log("Error: error in update transaction: " + event);
       };
 
-      const memeberStore = transaction.objectStore("memebers");
+      const memeberStore = transaction.objectStore("members");
       const reqUpdate = memeberStore.put(memeber);
 
       reqUpdate.onsuccess = (event: any) => {
         //returns the key of newly added item
-        console.log(`Success: A memeber is updated ${event.target.result}`);
+        console.log(`Success: A members is updated ${event.target.result}`);
         resolve(event.target.result);
       };
 
@@ -69,7 +69,7 @@ export class MembersDALService {
 
   selectAll(): Promise<Member[]> {
     return new Promise((resolve, reject) => {
-      const transaction = this.database.db.transaction(["memebers"], "readwrite");
+      const transaction = this.database.db.transaction(["members"], "readwrite");
 
       transaction.oncomplete = (event: any) => {
         console.log("Success: selectAll transaction successful");
@@ -78,7 +78,7 @@ export class MembersDALService {
         console.log("Error: error in selectAll transaction: " + event);
       };
 
-      const memeberStore = transaction.objectStore("memebers");
+      const memeberStore = transaction.objectStore("members");
       const req = memeberStore.getAll();
 
       req.onsuccess = (event: any) => {
@@ -96,7 +96,7 @@ export class MembersDALService {
 
   select(id: number): Promise<any> {
     return new Promise((resolve, reject) => {
-      const transaction = this.database.db.transaction(["memebers"]); //readonly
+      const transaction = this.database.db.transaction(["members"]); //readonly
 
       transaction.oncomplete = (event: any) => {
         console.log("Success: select transaction successful");
@@ -105,7 +105,7 @@ export class MembersDALService {
         console.log("Error: error in select transaction: " + event);
       };
 
-      const memeberStore = transaction.objectStore("memebers");
+      const memeberStore = transaction.objectStore("members");
 
       const req = memeberStore.get(id);
       req.onsuccess = (event: any) => {
@@ -120,7 +120,7 @@ export class MembersDALService {
 
   delete(memeber: Member): Promise<any> {
     return new Promise((resolve, reject) => {
-      const transaction = this.database.db.transaction(["memebers"], "readwrite");
+      const transaction = this.database.db.transaction(["members"], "readwrite");
 
       transaction.oncomplete = (event: any) => {
         console.log("Success: delete transaction successful");
@@ -129,7 +129,7 @@ export class MembersDALService {
         console.log("Error: error in delete transaction: " + event);
       };
 
-      const memberStore = transaction.objectStore("memebers");
+      const memberStore = transaction.objectStore("members");
       if (memeber.id) {
         const reqDelete = memberStore.delete(memeber.id);
         reqDelete.onsuccess = (event: any) => {
@@ -146,5 +146,6 @@ export class MembersDALService {
 
     });
   }
+
 
 }
