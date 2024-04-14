@@ -11,6 +11,10 @@ export class MembersDALService {
 
   constructor() { }
 
+  joinLocation(memberData: Member, courtLocationId: number): Promise<any> {
+    memberData.courtLocationId = courtLocationId; // Set the location ID
+    return this.insert(memberData); // Use your DAL insert method
+  }
 
 //Booking Object Store will have the following CRUD Functions (Insert, update, delete, select, select all)
   insert(member: Member): Promise<any> {

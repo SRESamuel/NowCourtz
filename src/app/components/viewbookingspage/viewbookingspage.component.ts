@@ -2,11 +2,14 @@ import {Component, inject} from '@angular/core';
 import {Booking} from "../../../models/booking.model";
 import {BookingDALService} from "../../../services/bookingDAL.service";
 import {Router} from "@angular/router";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-viewbookingspage',
   standalone: true,
-  imports: [],
+  imports: [
+    NgIf
+  ],
   templateUrl: './viewbookingspage.component.html',
   styleUrl: './viewbookingspage.component.css'
 })
@@ -44,6 +47,16 @@ export class ViewbookingspageComponent {
   }
   onEditClick(booking: Booking) {
     this.router.navigate([`/editbookings/${booking.id}`]);
+  }
+
+  onExportClick() {
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.bookings));
+    const downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href", dataStr);
+    downloadAnchorNode.setAttribute("download", "myBookings.txt");
+    document.body.appendChild(downloadAnchorNode);
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
   }
 
 

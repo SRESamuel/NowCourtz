@@ -27,22 +27,21 @@ export class CourtspageComponent implements OnInit{
   router = inject(Router)
   activatedRoute = inject(ActivatedRoute)
 
-  onCreateMember() {
-    this.router.navigate([`/member/`]);
-  }
-
   onViewMembers() {
     this.router.navigate([`/viewmembers/`]);
   }
 
-
+  protected readonly location = location;
 
   courtLocations = [
     {lat: "43.4198463274664", lon: "-80.48835797577193", name: "McLennan Park", id: 1},
     {lat: "43.51219188752865", lon: "-80.52018407586884", name: "The RunRec", id: 2},
     {lat: "43.49477722178892", lon: "-80.50310129445194", name: "Dunvegan Park", id: 3},
-    // Add the rest of your locations here
   ];
+
+  onCreateMember() {
+    this.router.navigate([`/member/`]);
+  }
 
   constructor() {
     const location1 = this.courtLocations.find(location => location.name === "McLennan Park");
@@ -149,7 +148,6 @@ export class CourtspageComponent implements OnInit{
     // Re-center the map to ensure all markers are visible
     map.getViewModel().setLookAtData({bounds: map.getObjects().getBoundingBox()});
   }
-
 
 }
 

@@ -21,7 +21,7 @@ export const routes: Routes = [
   {path: "editbookings/:id", component: EditbookingspageComponent},// id is to extract a specific booking
   {path: "viewbookings", component: ViewbookingspageComponent},
   {path: "profile", component: ProfilepageComponent},
-  {path: "member", component: MemberpageComponent},
+  { path: 'member', component: MemberpageComponent },
   {path: "viewmembers", component: ViewallmemberspageComponent},
   {path: "editmember/:id", component: EditmemberpageComponent},
   {path: "editprofiles/:id", component: EditprofilepageComponent},// id is to extract a specific booking
